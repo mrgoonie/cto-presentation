@@ -8,6 +8,11 @@
     <!-- DNS Prefetch for CDN -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- JetBrains Mono for code -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Reveal.js CSS with SRI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.min.css" crossorigin="anonymous">
@@ -98,6 +103,7 @@
 
         .reveal pre code {
             max-height: 500px;
+            font-family: 'JetBrains Mono', monospace;
             padding: 1em;
         }
 
@@ -137,7 +143,7 @@
             border: 1px solid #30363d;
             border-radius: 8px;
             padding: 1em 1.5em;
-            font-family: monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 1.2em;
             color: var(--accent-green);
         }
@@ -274,6 +280,11 @@
                     Duy Nguyen<br>
                     CTO/Founder @ Build in Public Vietnam
                 </p>
+                <aside class="notes">
+                    [3 min] Welcome everyone. I'm Duy, CTO of Build in Public Vietnam.
+                    Today I'm going to share some painful lessons about AI-assisted coding.
+                    This is a confessional - I'm going to admit my mistakes.
+                </aside>
             </section>
 
             <!-- Slide 2: The Hook -->
@@ -282,6 +293,11 @@
                     "Let me tell you about the time<br>
                     I had to kill my own product..."
                 </p>
+                <aside class="notes">
+                    PAUSE for effect. Let silence hang.
+                    IndieBoosting - my product that went viral and broke.
+                    I'll tell you the full story later.
+                </aside>
             </section>
 
             <!-- Slide 3: The Promise -->
@@ -348,6 +364,10 @@
                     Raise your hand if you've felt like a wizard<br>
                     in the last 6 months
                 </p>
+                <aside class="notes">
+                    [7 min mark] ENGAGE the audience. Count hands.
+                    "Great, most of you. Now let me tell you the dark side..."
+                </aside>
             </section>
 
             <!-- ============================================ -->
@@ -358,6 +378,10 @@
             <section>
                 <p class="section-title">The Three Lies</p>
                 <h2>Lie #1: "I implemented it"</h2>
+                <aside class="notes">
+                    [12 min section] These are the 3 biggest lies AI tells us.
+                    Lie #1 is the most dangerous - false confidence.
+                </aside>
             </section>
 
             <section>
@@ -470,6 +494,11 @@ const stats = {
                     <span class="timeline-arrow">&#8594;</span>
                     <span class="timeline-item t-red">Died</span>
                 </div>
+                <aside class="notes">
+                    [10 min section] This is the full IndieBoosting story.
+                    Built in days with AI. Went viral on Product Hunt.
+                    100K users hit it. Server died. 6 months to fix = killed it.
+                </aside>
             </section>
 
             <section>
@@ -573,6 +602,11 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
                 <p class="section-title">The Solution</p>
                 <h2>Building ClaudeKit from Pain</h2>
                 <p class="fragment" style="color: #8b949e;">What I wish I had</p>
+                <aside class="notes">
+                    [15 min section] This is the main value section.
+                    ClaudeKit is my answer to all these problems.
+                    Take your time here - this is what they came for.
+                </aside>
             </section>
 
             <section>
@@ -580,6 +614,10 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
                 <div class="workflow-box" style="font-size: 1em;">
                     /docs:init &#8594; /brainstorm &#8594; /plan &#8594; /clear &#8594; /code:auto
                 </div>
+                <aside class="notes">
+                    This is the core workflow. Write it down.
+                    Each command solves a specific problem.
+                </aside>
             </section>
 
             <section>
@@ -736,6 +774,10 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
                 <p class="fragment" style="color: #8b949e;">
                     Every bug I fix becomes a workflow
                 </p>
+                <aside class="notes">
+                    [3 min closing] Be humble here. Show vulnerability.
+                    This builds trust and connection.
+                </aside>
             </section>
 
             <section>
@@ -745,6 +787,10 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
                 <p class="fragment" style="color: var(--accent-purple); margin-top: 1em;">
                     Build in Public Vietnam
                 </p>
+                <aside class="notes">
+                    ENGAGE: Ask them to share their stories.
+                    Mention you'll be available after for Q&A.
+                </aside>
             </section>
 
             <section>
@@ -760,6 +806,10 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
                 <p class="fragment" style="font-size: 1.5em; margin-top: 1em; color: var(--accent-green);">
                     Thank You
                 </p>
+                <aside class="notes">
+                    [END] Total: 45-60 min. Point to QR code.
+                    Thank the organizers. Open for Q&A.
+                </aside>
             </section>
 
         </div>
