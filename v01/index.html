@@ -22,245 +22,913 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.min.css" crossorigin="anonymous">
 
     <style>
+        /* ═══════════════════════════════════════════════════════════════
+           BRUTALIST MATRIX DESIGN SYSTEM
+           Style: Raw, bold, high-contrast with green/teal matrix aesthetic
+           ═══════════════════════════════════════════════════════════════ */
+
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
         :root {
-            --r-background-color: #0d1117;
-            --r-main-color: #c9d1d9;
-            --r-heading-color: #58a6ff;
-            --r-link-color: #58a6ff;
-            --r-selection-background-color: #388bfd;
-            --accent-red: #f85149;
-            --accent-green: #3fb950;
-            --accent-yellow: #d29922;
-            --accent-purple: #a371f7;
+            /* Matrix Color Palette */
+            --matrix-black: #0a0a0a;
+            --matrix-dark: #0d1a0d;
+            --matrix-green: #00ff41;
+            --matrix-teal: #0abab5;
+            --matrix-cyan: #00d4ff;
+            --matrix-lime: #39ff14;
+            --matrix-dim: #1a3a1a;
+
+            /* Accent Colors */
+            --brutal-red: #ff3333;
+            --brutal-orange: #ff6600;
+            --brutal-yellow: #ffcc00;
+            --brutal-white: #f0f0f0;
+            --brutal-gray: #666;
+
+            /* Reveal.js Overrides */
+            --r-background-color: var(--matrix-black);
+            --r-main-color: var(--brutal-white);
+            --r-heading-color: var(--matrix-green);
+            --r-link-color: var(--matrix-cyan);
+            --r-selection-background-color: var(--matrix-teal);
         }
 
+        /* Base Typography - Brutalist */
         .reveal {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Space Grotesk', 'Arial Black', sans-serif;
+            background: var(--matrix-black);
         }
 
         .reveal h1, .reveal h2, .reveal h3 {
-            text-transform: none;
-            font-weight: 600;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 20px var(--matrix-green), 0 0 40px rgba(0, 255, 65, 0.3);
         }
 
-        .reveal h1 { font-size: 2.5em; }
-        .reveal h2 { font-size: 1.8em; }
-        .reveal h3 { font-size: 1.4em; }
+        .reveal h1 {
+            font-size: 3em;
+            border-bottom: 4px solid var(--matrix-green);
+            padding-bottom: 0.2em;
+            display: inline-block;
+        }
+        .reveal h2 {
+            font-size: 2em;
+            color: var(--matrix-teal);
+        }
+        .reveal h3 {
+            font-size: 1.5em;
+            color: var(--matrix-cyan);
+        }
 
+        /* Glowing Text Effect */
+        .glow {
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+        }
+
+        /* Subtitle Styling */
         .reveal .subtitle {
-            color: var(--accent-purple);
-            font-size: 1.2em;
+            color: var(--matrix-cyan);
+            font-size: 1.3em;
             margin-top: 0.5em;
+            font-family: 'IBM Plex Mono', monospace;
+            border: 2px solid var(--matrix-teal);
+            padding: 0.3em 0.8em;
+            display: inline-block;
         }
 
         .reveal .speaker-info {
-            font-size: 0.8em;
-            color: #8b949e;
+            font-size: 0.9em;
+            color: var(--brutal-gray);
             margin-top: 2em;
+            font-family: 'IBM Plex Mono', monospace;
         }
 
+        /* Dramatic Text - Brutalist */
         .reveal .dramatic {
-            font-size: 1.8em;
-            font-style: italic;
-            color: var(--accent-yellow);
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--brutal-yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-left: 6px solid var(--brutal-yellow);
+            padding-left: 0.5em;
+            text-shadow: 3px 3px 0 var(--matrix-dark);
         }
 
         .reveal .hook-text {
-            font-size: 1.5em;
-            line-height: 1.6;
+            font-size: 1.6em;
+            line-height: 1.5;
+            color: var(--brutal-white);
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           STATISTICS & DATA VISUALIZATION
+           ═══════════════════════════════════════════════════════════════ */
+
         .reveal .stat-big {
-            font-size: 3em;
-            font-weight: bold;
-            color: var(--accent-green);
+            font-size: 4em;
+            font-weight: 700;
+            color: var(--matrix-green);
+            font-family: 'IBM Plex Mono', monospace;
+            text-shadow: 0 0 30px var(--matrix-green);
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { text-shadow: 0 0 20px var(--matrix-green); }
+            50% { text-shadow: 0 0 40px var(--matrix-green), 0 0 60px var(--matrix-teal); }
         }
 
         .reveal .stat-red {
-            color: var(--accent-red);
+            color: var(--brutal-red);
+            text-shadow: 0 0 30px var(--brutal-red);
         }
 
         .reveal .stat-label {
-            font-size: 0.8em;
-            color: #8b949e;
+            font-size: 0.9em;
+            color: var(--brutal-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
         }
 
+        /* Comparison Layout - Brutalist Cards */
         .reveal .comparison {
             display: flex;
-            justify-content: space-around;
-            margin: 1em 0;
+            justify-content: center;
+            gap: 2em;
+            margin: 1.5em 0;
         }
 
         .reveal .comparison-item {
             text-align: center;
-            padding: 1em;
+            padding: 1.5em;
+            background: var(--matrix-dark);
+            border: 3px solid var(--matrix-dim);
+            position: relative;
         }
+
+        .reveal .comparison-item::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, var(--matrix-green), transparent, var(--matrix-teal));
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CODE BLOCKS - Terminal Style
+           ═══════════════════════════════════════════════════════════════ */
 
         .reveal pre {
             width: 100%;
-            font-size: 0.7em;
+            font-size: 0.75em;
+            background: #0d0d0d;
+            border: 2px solid var(--matrix-dim);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .reveal pre::before {
+            content: '$ ';
+            color: var(--matrix-green);
         }
 
         .reveal pre code {
             max-height: 500px;
-            font-family: 'JetBrains Mono', monospace;
-            padding: 1em;
-        }
-
-        .reveal .code-comment {
-            color: #8b949e;
+            font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+            padding: 1.2em;
+            background: transparent;
         }
 
         .reveal .code-bad {
-            background: rgba(248, 81, 73, 0.15);
-            border-left: 3px solid var(--accent-red);
+            background: rgba(255, 51, 51, 0.1);
+            border-left: 4px solid var(--brutal-red);
         }
 
         .reveal .code-good {
-            background: rgba(63, 185, 80, 0.15);
-            border-left: 3px solid var(--accent-green);
+            background: rgba(0, 255, 65, 0.1);
+            border-left: 4px solid var(--matrix-green);
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           TABLES - Data Grid Style
+           ═══════════════════════════════════════════════════════════════ */
+
         .reveal table {
-            margin: 1em auto;
+            margin: 1.5em auto;
             border-collapse: collapse;
-            font-size: 0.8em;
+            font-size: 0.85em;
+            font-family: 'IBM Plex Mono', monospace;
+            border: 2px solid var(--matrix-green);
         }
 
         .reveal table th,
         .reveal table td {
-            padding: 0.6em 1em;
-            border: 1px solid #30363d;
+            padding: 0.8em 1.2em;
+            border: 1px solid var(--matrix-dim);
         }
 
         .reveal table th {
-            background: #161b22;
-            color: var(--r-heading-color);
+            background: var(--matrix-dark);
+            color: var(--matrix-green);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
         }
+
+        .reveal table tr:hover {
+            background: rgba(0, 255, 65, 0.05);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           WORKFLOW & FLOWCHART COMPONENTS
+           ═══════════════════════════════════════════════════════════════ */
 
         .reveal .workflow-box {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
+            background: var(--matrix-dark);
+            border: 3px solid var(--matrix-green);
             padding: 1em 1.5em;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.2em;
-            color: var(--accent-green);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1em;
+            color: var(--matrix-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2), inset 0 0 20px rgba(0, 255, 65, 0.05);
         }
 
+        /* Flowchart Styles */
+        .flowchart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin: 1.5em 0;
+        }
+
+        .flow-node {
+            background: var(--matrix-dark);
+            border: 2px solid var(--matrix-teal);
+            padding: 0.8em 1.2em;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            color: var(--matrix-cyan);
+            position: relative;
+        }
+
+        .flow-node.active {
+            border-color: var(--matrix-green);
+            color: var(--matrix-green);
+            box-shadow: 0 0 15px var(--matrix-green);
+        }
+
+        .flow-node.danger {
+            border-color: var(--brutal-red);
+            color: var(--brutal-red);
+        }
+
+        .flow-node.warning {
+            border-color: var(--brutal-yellow);
+            color: var(--brutal-yellow);
+        }
+
+        .flow-arrow {
+            color: var(--matrix-teal);
+            font-size: 1.5em;
+            padding: 0 0.3em;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Infographic Boxes */
+        .info-box {
+            background: linear-gradient(135deg, var(--matrix-dark) 0%, var(--matrix-black) 100%);
+            border: 2px solid;
+            padding: 1.5em;
+            margin: 0.5em;
+            text-align: center;
+        }
+
+        .info-box.green { border-color: var(--matrix-green); }
+        .info-box.red { border-color: var(--brutal-red); }
+        .info-box.yellow { border-color: var(--brutal-yellow); }
+        .info-box.teal { border-color: var(--matrix-teal); }
+
+        .info-box .icon {
+            font-size: 2em;
+            margin-bottom: 0.3em;
+        }
+
+        .info-box .label {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brutal-gray);
+        }
+
+        .info-box .value {
+            font-size: 1.8em;
+            font-weight: 700;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Grid Layout for Infographics */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1em;
+            margin: 1em 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           VIDEO/DEMO PLACEHOLDERS
+           ═══════════════════════════════════════════════════════════════ */
+
         .reveal .video-placeholder {
-            background: #161b22;
-            border: 2px dashed #30363d;
-            border-radius: 8px;
+            background: var(--matrix-dark);
+            border: 3px dashed var(--matrix-dim);
             padding: 3em;
             text-align: center;
-            color: #8b949e;
+            color: var(--brutal-gray);
+            position: relative;
+            overflow: hidden;
         }
 
         .reveal .video-placeholder::before {
-            content: "VIDEO DEMO";
+            content: "▶ DEMO";
             display: block;
-            font-size: 1.2em;
-            color: var(--accent-purple);
+            font-size: 1.3em;
+            color: var(--matrix-teal);
             margin-bottom: 0.5em;
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.2em;
         }
 
-        .reveal .quote {
-            font-style: italic;
-            font-size: 1.4em;
-            border-left: 4px solid var(--accent-purple);
-            padding-left: 1em;
-            margin: 1em 0;
+        .reveal .video-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            animation: scan-line 3s infinite;
         }
+
+        @keyframes scan-line {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           QUOTES & CALLOUTS
+           ═══════════════════════════════════════════════════════════════ */
+
+        .reveal .quote {
+            font-size: 1.5em;
+            font-weight: 500;
+            border-left: 6px solid var(--matrix-green);
+            padding: 0.5em 1em;
+            margin: 1em 0;
+            background: rgba(0, 255, 65, 0.05);
+            color: var(--brutal-white);
+        }
+
+        .reveal .quote.danger {
+            border-color: var(--brutal-red);
+            background: rgba(255, 51, 51, 0.05);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TIMELINE - Horizontal Flow
+           ═══════════════════════════════════════════════════════════════ */
 
         .reveal .timeline {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.5em;
+            gap: 0;
             flex-wrap: wrap;
+            margin: 1em 0;
         }
 
         .reveal .timeline-item {
-            padding: 0.5em 1em;
-            border-radius: 4px;
-            font-size: 0.9em;
+            padding: 0.6em 1.2em;
+            font-size: 0.95em;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            border: 2px solid;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .reveal .timeline-arrow {
-            color: #8b949e;
+            color: var(--matrix-teal);
+            font-size: 1.3em;
+            padding: 0 0.2em;
         }
 
-        .reveal .t-green { background: rgba(63, 185, 80, 0.2); color: var(--accent-green); }
-        .reveal .t-yellow { background: rgba(210, 153, 34, 0.2); color: var(--accent-yellow); }
-        .reveal .t-red { background: rgba(248, 81, 73, 0.2); color: var(--accent-red); }
+        .reveal .t-green {
+            border-color: var(--matrix-green);
+            color: var(--matrix-green);
+            background: rgba(0, 255, 65, 0.1);
+        }
+        .reveal .t-yellow {
+            border-color: var(--brutal-yellow);
+            color: var(--brutal-yellow);
+            background: rgba(255, 204, 0, 0.1);
+        }
+        .reveal .t-red {
+            border-color: var(--brutal-red);
+            color: var(--brutal-red);
+            background: rgba(255, 51, 51, 0.1);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CHECKLIST - Terminal Style
+           ═══════════════════════════════════════════════════════════════ */
 
         .reveal .checklist {
             text-align: left;
             font-size: 1.1em;
             list-style: none;
             padding-left: 0;
+            font-family: 'IBM Plex Mono', monospace;
         }
 
         .reveal .checklist li {
-            padding: 0.4em 0;
+            padding: 0.5em 0;
+            border-bottom: 1px solid var(--matrix-dim);
         }
 
         .reveal .checklist li::before {
-            content: "[ ]";
-            color: var(--accent-green);
-            margin-right: 0.5em;
-            font-family: monospace;
+            content: "[_]";
+            color: var(--matrix-green);
+            margin-right: 0.8em;
+            font-weight: 600;
         }
 
+        .reveal .checklist li.checked::before {
+            content: "[✓]";
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           INTERACTIVE SECTIONS
+           ═══════════════════════════════════════════════════════════════ */
+
         .reveal .interactive {
-            background: linear-gradient(135deg, #1a1f35, #161b22);
-            border: 1px solid var(--accent-purple);
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--matrix-dark) 0%, rgba(10, 186, 181, 0.1) 100%);
+            border: 3px solid var(--matrix-teal);
             padding: 2em;
+            position: relative;
+        }
+
+        .reveal .interactive::before {
+            content: 'INTERACTIVE';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--matrix-black);
+            padding: 0 10px;
+            color: var(--matrix-teal);
+            font-size: 0.7em;
+            letter-spacing: 0.2em;
+            font-family: 'IBM Plex Mono', monospace;
         }
 
         .reveal .poll-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1em;
-            margin-top: 1em;
+            margin-top: 1.5em;
         }
 
         .reveal .poll-option {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
+            background: var(--matrix-dark);
+            border: 2px solid var(--matrix-dim);
             padding: 1em;
-            font-family: monospace;
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--matrix-cyan);
+            transition: all 0.2s;
         }
+
+        .reveal .poll-option:hover {
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           QR CODE & RESOURCES
+           ═══════════════════════════════════════════════════════════════ */
 
         .reveal .qr-placeholder {
             width: 200px;
             height: 200px;
-            background: #fff;
+            background: var(--brutal-white);
             margin: 1em auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #000;
+            color: var(--matrix-black);
             font-size: 0.8em;
+            border: 4px solid var(--matrix-green);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           SECTION TITLES
+           ═══════════════════════════════════════════════════════════════ */
+
+        .reveal .section-title {
+            color: var(--matrix-teal);
+            font-size: 0.7em;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 1em;
+            font-family: 'IBM Plex Mono', monospace;
+            border: 1px solid var(--matrix-teal);
+            padding: 0.3em 1em;
+            display: inline-block;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           FRAGMENT HIGHLIGHTS
+           ═══════════════════════════════════════════════════════════════ */
+
         .reveal .fragment.highlight-red.visible {
-            color: var(--accent-red);
+            color: var(--brutal-red);
+            text-shadow: 0 0 10px var(--brutal-red);
         }
 
         .reveal .fragment.highlight-green.visible {
-            color: var(--accent-green);
+            color: var(--matrix-green);
+            text-shadow: 0 0 10px var(--matrix-green);
         }
 
+        /* ═══════════════════════════════════════════════════════════════
+           LIES DIAGRAM - Visual Impact
+           ═══════════════════════════════════════════════════════════════ */
+
+        .lies-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5em;
+            margin: 2em 0;
+        }
+
+        .lie-card {
+            background: var(--matrix-dark);
+            border: 3px solid var(--brutal-red);
+            padding: 1.5em;
+            width: 250px;
+            text-align: center;
+            position: relative;
+        }
+
+        .lie-card::before {
+            content: attr(data-number);
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brutal-red);
+            color: var(--matrix-black);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .lie-card .lie-title {
+            color: var(--brutal-red);
+            font-weight: 700;
+            margin-bottom: 0.5em;
+            font-size: 1.1em;
+        }
+
+        .lie-card .lie-desc {
+            color: var(--brutal-gray);
+            font-size: 0.9em;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           MATRIX RAIN EFFECT (Background)
+           ═══════════════════════════════════════════════════════════════ */
+
+        .matrix-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .matrix-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 65, 0.03) 2px,
+                    rgba(0, 255, 65, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CITATION LINKS
+           ═══════════════════════════════════════════════════════════════ */
+
+        .citation {
+            font-size: 0.7em;
+            color: var(--brutal-gray);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .citation a {
+            color: var(--matrix-cyan);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--matrix-cyan);
+        }
+
+        .citation a:hover {
+            color: var(--matrix-green);
+            border-color: var(--matrix-green);
+        }
+
+        /* Progress Bar Styling */
+        .reveal .progress {
+            background: var(--matrix-dim);
+            height: 4px;
+        }
+
+        .reveal .progress span {
+            background: var(--matrix-green);
+            box-shadow: 0 0 10px var(--matrix-green);
+        }
+
+        /* Slide Number - positioned to avoid nav arrows */
+        .reveal .slide-number {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--matrix-teal);
+            background: var(--matrix-black);
+            font-size: 0.7em;
+            right: auto !important;
+            left: 20px !important;
+            bottom: 20px !important;
+            padding: 0.3em 0.6em;
+            border: 1px solid var(--matrix-dim);
+        }
+
+        /* Global slide padding fixes */
+        .reveal .slides section {
+            padding: 20px 40px !important;
+            box-sizing: border-box;
+        }
+
+        /* Prevent text wrapping for single-line elements */
+        .reveal .no-wrap {
+            white-space: nowrap !important;
+        }
+
+        /* Force horizontal layout for flowcharts - NO SCROLLBARS */
+        .flowchart {
+            flex-wrap: nowrap !important;
+            overflow: visible !important;
+            justify-content: center;
+            gap: 0.2em;
+            max-width: 100%;
+        }
+        .flowchart .flow-node {
+            flex-shrink: 1;
+            min-width: auto;
+            padding: 0.3em 0.4em;
+            font-size: 0.55em;
+            white-space: nowrap;
+        }
+        .flowchart .flow-node > div {
+            font-size: 0.9em !important;
+        }
+        .flowchart .flow-arrow {
+            flex-shrink: 0;
+            font-size: 0.8em;
+            padding: 0 0.05em;
+        }
+
+        /* Info box fixes - NO TEXT WRAPPING */
+        .info-box {
+            padding: 0.6em;
+            min-width: 0;
+            overflow: hidden;
+        }
+        .info-box .value {
+            font-size: 0.75em;
+            white-space: nowrap;
+            overflow: visible;
+        }
+        .info-box .label {
+            font-size: 0.45em;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+        .info-box .icon {
+            font-size: 1.2em;
+        }
+
+        /* Force cards in single row - compact */
+        .info-grid {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            justify-content: center;
+            gap: 0.5em;
+        }
+        .info-grid .info-box {
+            flex: 1;
+            max-width: 180px;
+            min-width: 100px;
+        }
+
+        /* Lies container fix */
+        .lies-container {
+            flex-wrap: nowrap !important;
+            gap: 0.6em;
+            overflow: visible !important;
+        }
+        .lie-card {
+            width: auto;
+            min-width: 140px;
+            max-width: 180px;
+            padding: 0.7em;
+            font-size: 0.9em;
+        }
+
+        /* Comparison layout fix */
+        .reveal .comparison {
+            flex-wrap: nowrap !important;
+            gap: 1em;
+            overflow: visible !important;
+        }
+        .reveal .comparison-item {
+            flex: 1;
+            max-width: 280px;
+            padding: 0.8em;
+        }
+
+        /* Table fix for smaller screens */
+        .reveal table {
+            font-size: 0.75em;
+            margin: 1em auto;
+        }
+        .reveal table th,
+        .reveal table td {
+            padding: 0.5em 0.8em;
+        }
+
+        /* Quote size fix */
+        .reveal .quote {
+            font-size: 1.2em;
+            padding: 0.4em 0.8em;
+        }
+        .reveal .quote.danger {
+            font-size: 1.4em;
+        }
+
+        /* Stat big size reduction */
+        .reveal .stat-big {
+            font-size: 3.5em;
+        }
+
+        /* Workflow box fix */
+        .reveal .workflow-box {
+            padding: 0.6em 1em;
+            font-size: 0.95em;
+        }
+
+        /* Video placeholder smaller */
+        .reveal .video-placeholder {
+            padding: 1.5em;
+            font-size: 0.9em;
+        }
+
+        /* Poll options fix */
+        .reveal .poll-options {
+            gap: 0.8em;
+        }
+        .reveal .poll-option {
+            padding: 0.8em;
+            font-size: 0.9em;
+        }
+
+        /* Checklist fix */
+        .reveal .checklist {
+            font-size: 0.95em;
+        }
+        .reveal .checklist li {
+            padding: 0.4em 0;
+        }
+
+        /* Timeline fix */
+        .reveal .timeline {
+            flex-wrap: nowrap !important;
+            overflow: visible !important;
+            gap: 0.3em;
+        }
+        .reveal .timeline-item {
+            padding: 0.3em 0.5em;
+            font-size: 0.7em;
+            white-space: nowrap;
+        }
+
+        /* Interactive section fix */
+        .reveal .interactive {
+            padding: 1.5em;
+        }
+
+        /* QR placeholder fix */
+        .reveal .qr-placeholder {
+            width: 160px;
+            height: 160px;
+            font-size: 0.7em;
+        }
+        .reveal .qr-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Profile image styling */
+        .reveal .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--matrix-green);
+            box-shadow: 0 0 20px var(--matrix-green);
+            object-fit: cover;
+        }
+
+        /* Dramatic text fix */
+        .reveal .dramatic {
+            font-size: 1.4em;
+            line-height: 1.3;
+        }
+
+        /* Section title smaller */
         .reveal .section-title {
-            color: var(--accent-purple);
             font-size: 0.6em;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 1em;
+            padding: 0.2em 0.8em;
+            margin-bottom: 0.8em;
+        }
+
+        /* Speaker info fix */
+        .reveal .speaker-info {
+            font-size: 0.8em;
+            margin-top: 1.5em;
+        }
+
+        /* Subtitle fix */
+        .reveal .subtitle {
+            font-size: 1.1em;
+            padding: 0.2em 0.6em;
+        }
+
+        /* Code block fix */
+        .reveal pre {
+            font-size: 0.65em;
+            margin: 0.8em 0;
+        }
+        .reveal pre code {
+            padding: 0.8em;
+            max-height: 350px;
+        }
+
+        /* H2/H3 size adjustment */
+        .reveal h2 {
+            font-size: 1.6em;
+            margin-bottom: 0.5em;
+        }
+        .reveal h3 {
+            font-size: 1.3em;
+            margin-bottom: 0.5em;
+        }
+
+        /* Closing slide layout */
+        .closing-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2em;
+        }
+        .closing-info {
+            text-align: left;
         }
     </style>
 </head>
@@ -273,12 +941,17 @@
             <!-- ============================================ -->
 
             <!-- Slide 1: Title -->
-            <section>
-                <h1>From Vibe Coding<br>to Production</h1>
-                <p class="subtitle">The CTO's Confessional</p>
+            <section class="matrix-bg">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 1.5em; margin-bottom: 1em;">
+                    <img src="images/profile.jpg" alt="Duy Nguyen" class="profile-img">
+                    <div style="text-align: left;">
+                        <h1 style="font-size: 2em; margin: 0; border: none; padding: 0;">From Vibe Coding<br>to Production</h1>
+                        <p class="subtitle" style="margin-top: 0.5em;">// THE CTO'S CONFESSIONAL</p>
+                    </div>
+                </div>
                 <p class="speaker-info">
-                    Duy Nguyen<br>
-                    CTO/Founder @ Build in Public Vietnam
+                    <span style="color: var(--matrix-green);">$</span> whoami |
+                    <span style="color: var(--matrix-cyan);">Duy Nguyen</span> | CTO @ Build in Public Vietnam
                 </p>
                 <aside class="notes">
                     [3 min] Welcome everyone. I'm Duy, CTO of Build in Public Vietnam.
@@ -288,11 +961,16 @@
             </section>
 
             <!-- Slide 2: The Hook -->
-            <section data-background-gradient="radial-gradient(circle, #1a1a2e 0%, #0d1117 100%)">
-                <p class="dramatic">
-                    "Let me tell you about the time<br>
-                    I had to kill my own product..."
+            <section data-background-gradient="radial-gradient(circle, #0d1a0d 0%, #0a0a0a 100%)">
+                <p class="dramatic" style="font-size: 1.8em;">
+                    "LET ME TELL YOU ABOUT THE TIME<br>
+                    I HAD TO KILL MY OWN PRODUCT..."
                 </p>
+                <div style="margin-top: 2em;">
+                    <span style="font-family: 'IBM Plex Mono', monospace; color: var(--brutal-red); font-size: 0.9em;">
+                        [FATAL ERROR] product.exe has stopped responding
+                    </span>
+                </div>
                 <aside class="notes">
                     PAUSE for effect. Let silence hang.
                     IndieBoosting - my product that went viral and broke.
@@ -300,14 +978,26 @@
                 </aside>
             </section>
 
-            <!-- Slide 3: The Promise -->
-            <section>
-                <h2>Today: How to go from<br>"Cool Demo" to "Scalable Product"</h2>
-                <ul>
-                    <li class="fragment">The lies AI tools tell us</li>
-                    <li class="fragment">The 1,000 users question</li>
-                    <li class="fragment">A workflow that actually works</li>
-                </ul>
+            <!-- Slide 3: The Promise - Agenda Flowchart -->
+            <section class="matrix-bg">
+                <h2>TODAY'S AGENDA</h2>
+                <p style="color: var(--brutal-gray); margin-bottom: 1.5em;">Cool Demo → Scalable Product</p>
+                <div class="flowchart">
+                    <div class="flow-node danger fragment">
+                        <div style="font-size: 0.7em; color: var(--brutal-gray);">01</div>
+                        THE 3 LIES
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node warning fragment">
+                        <div style="font-size: 0.7em; color: var(--brutal-gray);">02</div>
+                        1000 USERS
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active fragment">
+                        <div style="font-size: 0.7em; color: var(--brutal-gray);">03</div>
+                        THE WORKFLOW
+                    </div>
+                </div>
             </section>
 
             <!-- ============================================ -->
@@ -315,55 +1005,77 @@
             <!-- ============================================ -->
 
             <!-- Slide 4: The Magic Feeling -->
-            <section>
-                <p class="section-title">The Seduction</p>
-                <h2>The First Time AI Wrote Code For Me...</h2>
-                <p class="fragment dramatic" style="margin-top: 1em;">I felt like a wizard.</p>
+            <section class="matrix-bg">
+                <p class="section-title">// THE SEDUCTION</p>
+                <h2>THE FIRST TIME AI WROTE CODE FOR ME...</h2>
+                <p class="fragment" style="margin-top: 1.5em; font-size: 1.3em; color: var(--matrix-cyan);">
+                    <span style="font-family: 'IBM Plex Mono', monospace;">&gt;</span> I felt like a wizard.
+                </p>
+                <div class="fragment no-wrap" style="margin-top: 1em; font-family: 'IBM Plex Mono', monospace; color: var(--matrix-green); font-size: 0.8em;">
+                    [████████████████] 100% DOPAMINE COMPLETE
+                </div>
             </section>
 
-            <!-- Slide 5: The Speed -->
+            <!-- Slide 5: The Speed - Infographic Comparison -->
             <section>
-                <h2>The Speed Was Intoxicating</h2>
-                <div class="comparison">
-                    <div class="comparison-item">
-                        <div class="stat-big">2 hours</div>
-                        <div class="stat-label">to MVP with AI</div>
+                <h2>THE SPEED WAS INTOXICATING</h2>
+                <div class="info-grid" style="max-width: 800px; margin: 1.5em auto;">
+                    <div class="info-box green">
+                        <div class="icon">⚡</div>
+                        <div class="value" style="color: var(--matrix-green);">2 HRS</div>
+                        <div class="label">MVP with AI</div>
+                        <div style="margin-top: 0.5em; font-size: 0.8em; color: var(--matrix-teal);">168x FASTER</div>
                     </div>
-                    <div class="comparison-item" style="color: #8b949e;">
-                        <div style="font-size: 3em;">vs</div>
-                    </div>
-                    <div class="comparison-item">
-                        <div class="stat-big stat-red">2 weeks</div>
-                        <div class="stat-label">traditional coding</div>
+                    <div class="info-box red">
+                        <div class="icon">🐢</div>
+                        <div class="value" style="color: var(--brutal-red);">2 WKS</div>
+                        <div class="label">Traditional</div>
+                        <div style="margin-top: 0.5em; font-size: 0.8em; color: var(--brutal-gray);">336 HOURS</div>
                     </div>
                 </div>
+                <p class="citation">Source: Personal experience, 2024-2025</p>
             </section>
 
             <!-- Slide 6: The Demo That Worked -->
             <section>
-                <h2>IndieBoosting</h2>
-                <p>Built in days. Launched. Users came.</p>
-                <div class="video-placeholder">
+                <h2>INDIEBOOSTING</h2>
+                <div class="flowchart" style="margin: 1em 0;">
+                    <div class="flow-node active">BUILT</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active">LAUNCHED</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active">USERS CAME</div>
+                </div>
+                <div class="video-placeholder" style="margin-top: 1.5em;">
                     IndieBoosting screenshot/demo
                 </div>
+                <p class="citation" style="margin-top: 1em;">
+                    Built with AI in days, not months
+                </p>
             </section>
 
             <!-- Slide 7: The Numbers -->
-            <section data-background-gradient="radial-gradient(circle, #0d2818 0%, #0d1117 100%)">
-                <div class="stat-big" style="font-size: 4em;">100,000+</div>
-                <p style="font-size: 1.5em;">concurrent visitors</p>
-                <p class="fragment" style="color: var(--accent-yellow); margin-top: 1em;">
-                    And then...
+            <section data-background-gradient="radial-gradient(circle, #0d2818 0%, #0a0a0a 100%)">
+                <div class="stat-big" style="font-size: 5em;">100K+</div>
+                <p style="font-size: 1.5em; font-family: 'IBM Plex Mono', monospace; color: var(--matrix-teal);">
+                    CONCURRENT VISITORS
                 </p>
+                <div class="fragment" style="margin-top: 1.5em;">
+                    <div style="font-family: 'IBM Plex Mono', monospace; color: var(--brutal-yellow); font-size: 1.2em;">
+                        <span style="animation: pulse-glow 1s infinite;">⚠</span> AND THEN...
+                    </div>
+                </div>
             </section>
 
             <!-- Slide 8: Interactive -->
             <section class="interactive">
-                <h2>Quick Poll</h2>
-                <p style="font-size: 1.3em; margin-top: 1em;">
-                    Raise your hand if you've felt like a wizard<br>
-                    in the last 6 months
+                <h2 style="color: var(--matrix-cyan);">QUICK POLL</h2>
+                <p style="font-size: 1.3em; margin-top: 1em; color: var(--brutal-white);">
+                    <span style="color: var(--matrix-green);">$</span> raise --hand "wizard mode in last 6 months"
                 </p>
+                <div style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace; color: var(--brutal-gray);">
+                    [Counting responses...]
+                </div>
                 <aside class="notes">
                     [7 min mark] ENGAGE the audience. Count hands.
                     "Great, most of you. Now let me tell you the dark side..."
@@ -375,9 +1087,13 @@
             <!-- ============================================ -->
 
             <!-- Lie #1: Slides 9-12 -->
-            <section>
-                <p class="section-title">The Three Lies</p>
-                <h2>Lie #1: "I implemented it"</h2>
+            <section class="matrix-bg">
+                <p class="section-title">// THE THREE LIES</p>
+                <h2 style="color: var(--brutal-red);">LIE #1: "I IMPLEMENTED IT"</h2>
+                <div class="no-wrap" style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace; font-size: 0.85em;">
+                    <span style="color: var(--brutal-red);">ERROR:</span>
+                    <span style="color: var(--brutal-gray);">confidence.level !== reality.level</span>
+                </div>
                 <aside class="notes">
                     [12 min section] These are the 3 biggest lies AI tells us.
                     Lie #1 is the most dangerous - false confidence.
@@ -385,87 +1101,152 @@
             </section>
 
             <section>
-                <h3>2025. Claude Code. I'm in love.</h3>
-                <p class="fragment">Shipped to a client website.</p>
-                <p class="fragment" style="color: var(--accent-red); font-size: 1.3em; margin-top: 1em;">
-                    Days later: "Why are there fake statistics?"
+                <h3>2025. CLAUDE CODE. I'M IN LOVE.</h3>
+                <div class="flowchart" style="margin: 1.5em 0;">
+                    <div class="flow-node active fragment">WROTE CODE</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node warning fragment">SHIPPED</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node danger fragment">CLIENT CALL</div>
+                </div>
+                <p class="fragment" style="color: var(--brutal-red); font-size: 1.3em; margin-top: 1em; font-family: 'IBM Plex Mono', monospace;">
+                    "Why are there fake statistics?"
                 </p>
             </section>
 
             <section>
-                <h3>The Code</h3>
-                <pre><code class="javascript" data-trim data-line-numbers>
+                <h3>THE CODE</h3>
+                <pre class="code-bad"><code class="javascript" data-trim data-line-numbers>
 // What I thought Claude did:
 const stats = await fetchRealStats();
 
 // What Claude actually did:
 const stats = {
-  users: 10432,  // Made up
-  revenue: "$50K" // Hallucinated
+  users: 10432,  // ← HALLUCINATED
+  revenue: "$50K" // ← MADE UP
 };
                 </code></pre>
-            </section>
-
-            <section>
-                <h2>The Lesson</h2>
-                <p class="quote">Always verify. Never trust completion claims.</p>
-                <p class="fragment" style="font-size: 1.2em; margin-top: 1em;">
-                    Run the tests yourself.
+                <p class="citation" style="margin-top: 1em;">
+                    Real incident, 2025 | <a href="https://arxiv.org/abs/2303.12712" target="_blank">AI Hallucination Research</a>
                 </p>
             </section>
 
-            <!-- Lie #2: Slides 13-15 -->
             <section>
-                <p class="section-title">The Three Lies</p>
-                <h2>Lie #2: "Context is fine"</h2>
+                <h2>THE LESSON</h2>
+                <div class="quote" style="text-transform: uppercase;">
+                    Always verify. Never trust completion claims.
+                </div>
+                <div class="fragment workflow-box" style="margin-top: 1.5em;">
+                    $ npm test && npm run verify
+                </div>
             </section>
 
-            <section>
-                <h3>Context Rot is Real</h3>
-                <p style="color: #8b949e; font-size: 0.9em;">Chroma Research, 2024</p>
-                <div class="video-placeholder">
-                    Graph: Performance vs Context Length<br>
-                    (Quality degrades as context grows)
+            <!-- Lie #2: Slides 13-15 -->
+            <section class="matrix-bg">
+                <p class="section-title">// THE THREE LIES</p>
+                <h2 style="color: var(--brutal-red);">LIE #2: "CONTEXT IS FINE"</h2>
+                <div style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace;">
+                    <span style="color: var(--brutal-yellow);">WARNING:</span>
+                    <span style="color: var(--brutal-gray);">context.length > context.quality</span>
                 </div>
             </section>
 
             <section>
-                <h3>The Symptoms</h3>
-                <ul>
-                    <li class="fragment">GPT starts hallucinating when confused</li>
-                    <li class="fragment">Claude refuses to answer</li>
-                    <li class="fragment">Code quality degrades over long conversations</li>
-                </ul>
-                <div class="fragment" style="margin-top: 2em;">
-                    <p style="color: var(--accent-green);">The Fix:</p>
-                    <code class="workflow-box">/clear</code>
-                    <p style="font-size: 0.9em; margin-top: 0.5em;">Fresh context = Better output</p>
+                <h3>CONTEXT ROT IS REAL</h3>
+                <!-- Visual: Context Degradation Meter -->
+                <div style="max-width: 600px; margin: 1.5em auto;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5em;">
+                        <span style="color: var(--matrix-green);">0K tokens</span>
+                        <span style="color: var(--brutal-red);">200K tokens</span>
+                    </div>
+                    <div style="height: 30px; background: linear-gradient(90deg, var(--matrix-green), var(--brutal-yellow), var(--brutal-red)); border: 2px solid var(--matrix-dim);"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.5em; font-size: 0.8em; color: var(--brutal-gray);">
+                        <span>HIGH QUALITY</span>
+                        <span>DEGRADED</span>
+                    </div>
+                </div>
+                <p class="citation">
+                    <a href="https://www.trychroma.com/blog/context-length" target="_blank">Chroma Research, 2024</a> |
+                    <a href="https://arxiv.org/abs/2307.03172" target="_blank">Lost in the Middle: How LLMs Use Long Contexts</a>
+                </p>
+            </section>
+
+            <section>
+                <h3>THE SYMPTOMS</h3>
+                <div class="info-grid" style="max-width: 700px; margin: 0.8em auto;">
+                    <div class="info-box red fragment">
+                        <div class="icon">🤖</div>
+                        <div class="value" style="color: var(--brutal-red);">GPT</div>
+                        <div class="label">Hallucinates</div>
+                    </div>
+                    <div class="info-box yellow fragment">
+                        <div class="icon">🚫</div>
+                        <div class="value" style="color: var(--brutal-yellow);">Claude</div>
+                        <div class="label">Refuses</div>
+                    </div>
+                    <div class="info-box red fragment">
+                        <div class="icon">📉</div>
+                        <div class="value" style="color: var(--brutal-red);">Quality</div>
+                        <div class="label">Degrades</div>
+                    </div>
+                </div>
+                <div class="fragment" style="margin-top: 1em;">
+                    <p style="color: var(--matrix-green); font-family: 'IBM Plex Mono', monospace; font-size: 0.9em;">THE FIX:</p>
+                    <div class="workflow-box" style="margin-top: 0.3em;">/clear</div>
+                    <p style="font-size: 0.8em; margin-top: 0.3em; color: var(--brutal-gray);">Fresh context = Better output</p>
                 </div>
             </section>
 
             <!-- Lie #3: Slides 16-18 -->
-            <section>
-                <p class="section-title">The Three Lies</p>
-                <h2>Lie #3: "I understand your codebase"</h2>
+            <section class="matrix-bg">
+                <p class="section-title">// THE THREE LIES</p>
+                <h2 style="color: var(--brutal-red);">LIE #3: "I UNDERSTAND YOUR CODEBASE"</h2>
+                <div style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace;">
+                    <span style="color: var(--brutal-red);">FATAL:</span>
+                    <span style="color: var(--brutal-gray);">assumption !== understanding</span>
+                </div>
             </section>
 
             <section>
-                <h3>The Confidence Problem</h3>
-                <ul>
-                    <li class="fragment">AI reads your code <span style="color: var(--accent-green);">confidently</span></li>
-                    <li class="fragment">Writes new features <span style="color: var(--accent-green);">confidently</span></li>
-                    <li class="fragment">Ships <span style="color: var(--accent-red);">confidently wrong</span> code</li>
-                </ul>
+                <h3>THE CONFIDENCE PROBLEM</h3>
+                <!-- Visual: Confidence vs Reality -->
+                <div style="display: flex; justify-content: center; gap: 1.5em; margin: 1em 0;">
+                    <div class="info-box green fragment" style="width: 150px; padding: 0.8em;">
+                        <div style="font-size: 0.7em; color: var(--brutal-gray);">AI CONFIDENCE</div>
+                        <div style="font-size: 2.2em; color: var(--matrix-green);">99%</div>
+                    </div>
+                    <div style="display: flex; align-items: center; font-size: 1.8em; color: var(--brutal-red);">≠</div>
+                    <div class="info-box red fragment" style="width: 150px; padding: 0.8em;">
+                        <div style="font-size: 0.7em; color: var(--brutal-gray);">ACTUAL</div>
+                        <div style="font-size: 2.2em; color: var(--brutal-red);">60%</div>
+                    </div>
+                </div>
+                <div class="flowchart fragment" style="margin-top: 1em;">
+                    <div class="flow-node active">READS</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active">WRITES</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node danger">SHIPS WRONG</div>
+                </div>
             </section>
 
             <section>
-                <h3>Architecture Mismatch</h3>
-                <p style="font-size: 5em; margin: 0.3em 0;">[ ] &#8594; ( )</p>
-                <p style="color: #8b949e;">"Works" but doesn't fit</p>
-                <div class="fragment" style="margin-top: 2em;">
-                    <p style="color: var(--accent-green);">The Fix:</p>
-                    <code class="workflow-box">/docs:init</code>
-                    <p style="font-size: 0.9em; margin-top: 0.5em;">Force AI to understand before it acts</p>
+                <h3>ARCHITECTURE MISMATCH</h3>
+                <!-- Visual: Square peg round hole -->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 0.8em; margin: 1em 0;">
+                    <div style="width: 80px; height: 80px; border: 3px solid var(--matrix-green); display: flex; align-items: center; justify-content: center;">
+                        <span style="font-family: 'IBM Plex Mono', monospace; color: var(--matrix-green); font-size: 0.8em;">YOUR<br>CODE</span>
+                    </div>
+                    <span style="font-size: 2em; color: var(--brutal-red);">≠</span>
+                    <div style="width: 80px; height: 80px; border: 3px solid var(--brutal-red); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <span style="font-family: 'IBM Plex Mono', monospace; color: var(--brutal-red); font-size: 0.8em;">AI<br>CODE</span>
+                    </div>
+                </div>
+                <p style="color: var(--brutal-gray); font-size: 0.9em;">"Works" but doesn't fit</p>
+                <div class="fragment" style="margin-top: 1em;">
+                    <p style="color: var(--matrix-green); font-family: 'IBM Plex Mono', monospace; font-size: 0.9em;">THE FIX:</p>
+                    <div class="workflow-box" style="margin-top: 0.3em;">/docs:init</div>
+                    <p style="font-size: 0.8em; margin-top: 0.3em; color: var(--brutal-gray);">Force AI to understand before it acts</p>
                 </div>
             </section>
 
@@ -473,26 +1254,45 @@ const stats = {
             <!-- SECTION 4: THE 1000 USERS QUESTION (Slides 19-26) -->
             <!-- ============================================ -->
 
-            <section data-background-gradient="radial-gradient(circle, #2d1b1b 0%, #0d1117 100%)">
-                <p class="section-title">The Question</p>
-                <h2 style="font-size: 1.6em;">
-                    "How do I ensure this doesn't break<br>
-                    when 1,000 users show up?"
+            <section data-background-gradient="radial-gradient(circle, #1a0d0d 0%, #0a0a0a 100%)">
+                <p class="section-title">// THE QUESTION</p>
+                <h2 style="font-size: 1.8em; color: var(--brutal-yellow);">
+                    "HOW DO I ENSURE THIS DOESN'T BREAK<br>
+                    WHEN 1,000 USERS SHOW UP?"
                 </h2>
+                <div style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace; color: var(--brutal-gray);">
+                    [The question every CTO should ask]
+                </div>
             </section>
 
             <section>
-                <h2>IndieBoosting: The Full Story</h2>
-                <div class="timeline">
-                    <span class="timeline-item t-green">Built</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-green">Launched</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-yellow">Viral</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-red">Broke</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-red">Died</span>
+                <h2>INDIEBOOSTING: THE FULL STORY</h2>
+                <!-- Enhanced Timeline Flowchart -->
+                <div class="flowchart" style="margin: 1.5em 0;">
+                    <div class="flow-node active">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">DAY 1</div>
+                        BUILT
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">DAY 3</div>
+                        LAUNCHED
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node warning">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">DAY 5</div>
+                        VIRAL
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node danger">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">DAY 6</div>
+                        BROKE
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node danger">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">MONTH 6</div>
+                        DIED
+                    </div>
                 </div>
                 <aside class="notes">
                     [10 min section] This is the full IndieBoosting story.
@@ -502,94 +1302,132 @@ const stats = {
             </section>
 
             <section>
-                <h3>What Broke: Database</h3>
-                <ul>
-                    <li>Queries weren't optimized</li>
-                    <li>N+1 problems everywhere</li>
-                </ul>
-                <pre class="fragment"><code class="javascript" data-trim>
-// What AI wrote
+                <h3>WHAT BROKE: DATABASE</h3>
+                <div class="info-grid" style="max-width: 600px; margin: 1em auto;">
+                    <div class="info-box red">
+                        <div class="icon">🔄</div>
+                        <div class="value" style="color: var(--brutal-red);">N+1</div>
+                        <div class="label">Query Problem</div>
+                    </div>
+                    <div class="info-box red">
+                        <div class="icon">🐌</div>
+                        <div class="value" style="color: var(--brutal-red);">0</div>
+                        <div class="label">Indexes</div>
+                    </div>
+                </div>
+                <pre class="code-bad fragment"><code class="javascript" data-trim>
+// What AI wrote - N+1 PROBLEM
 users.forEach(async (user) => {
-  const orders = await db.query(`SELECT * FROM orders WHERE user_id = ${user.id}`);
+  const orders = await db.query(
+    `SELECT * FROM orders WHERE user_id = ${user.id}`
+  );
 });
-
-// What it should have been
-const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [userIds]);
+                </code></pre>
+                <pre class="code-good fragment"><code class="javascript" data-trim>
+// What it should have been - BATCH QUERY
+const orders = await db.query(
+  `SELECT * FROM orders WHERE user_id IN (??)`,
+  [userIds]
+);
                 </code></pre>
             </section>
 
             <section>
-                <h3>What Broke: No Caching</h3>
-                <ul>
-                    <li>Every request hit the server</li>
-                    <li>No rate limiting</li>
-                </ul>
-                <p class="fragment stat-big stat-red" style="font-size: 2em; margin-top: 1em;">
-                    100K requests/second
-                </p>
+                <h3>WHAT BROKE: NO CACHING</h3>
+                <!-- Visual: Request Flow -->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1em; margin: 1.5em 0;">
+                    <div class="info-box red" style="width: 150px;">
+                        <div class="icon">👥</div>
+                        <div class="value" style="color: var(--brutal-red);">100K</div>
+                        <div class="label">Users</div>
+                    </div>
+                    <span style="font-size: 2em; color: var(--brutal-red);">→</span>
+                    <div class="info-box red" style="width: 150px;">
+                        <div class="icon">🔥</div>
+                        <div class="value" style="color: var(--brutal-red);">100K</div>
+                        <div class="label">Req/sec</div>
+                    </div>
+                    <span style="font-size: 2em; color: var(--brutal-red);">→</span>
+                    <div class="info-box red" style="width: 150px;">
+                        <div class="icon">💀</div>
+                        <div class="value" style="color: var(--brutal-red);">DEAD</div>
+                        <div class="label">Server</div>
+                    </div>
+                </div>
+                <p style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace;">No caching • No rate limiting • No CDN</p>
             </section>
 
             <section>
-                <h3>What Broke: Memory</h3>
-                <ul>
-                    <li>Memory leaks accumulated</li>
-                    <li>Server OOM after hours</li>
-                </ul>
-                <p class="fragment" style="color: var(--accent-red); font-size: 1.2em; margin-top: 1em;">
-                    "Why is RAM at 99%?"
-                </p>
+                <h3>WHAT BROKE: MEMORY</h3>
+                <!-- Visual: RAM Usage Bar -->
+                <div style="max-width: 500px; margin: 1.5em auto;">
+                    <div style="font-family: 'IBM Plex Mono', monospace; margin-bottom: 0.5em;">
+                        <span style="color: var(--brutal-gray);">RAM USAGE</span>
+                    </div>
+                    <div style="height: 40px; background: var(--matrix-dark); border: 2px solid var(--brutal-red); position: relative;">
+                        <div style="width: 99%; height: 100%; background: linear-gradient(90deg, var(--brutal-yellow), var(--brutal-red));"></div>
+                        <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: var(--brutal-white); font-weight: bold;">99%</span>
+                    </div>
+                </div>
+                <div class="fragment" style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace;">
+                    <span style="color: var(--brutal-red);">[OUT OF MEMORY]</span>
+                    <span style="color: var(--brutal-gray);">Server crashed after 4 hours</span>
+                </div>
             </section>
 
-            <section>
-                <h3>The Engineer's Verdict</h3>
-                <p class="quote" style="color: var(--accent-red);">
-                    "6 months to rewrite"
-                </p>
-                <p class="fragment dramatic" style="margin-top: 1em;">
+            <section data-background-gradient="radial-gradient(circle, #1a0d0d 0%, #0a0a0a 100%)">
+                <h3>THE ENGINEER'S VERDICT</h3>
+                <div class="quote danger" style="font-size: 2em;">
+                    "6 MONTHS TO REWRITE"
+                </div>
+                <p class="fragment" style="margin-top: 1.5em; font-size: 1.5em; color: var(--brutal-yellow); text-transform: uppercase;">
                     I had to kill it.
                 </p>
             </section>
 
             <section>
-                <h3>The Three Vulnerabilities</h3>
+                <h3>THE THREE VULNERABILITIES</h3>
                 <table>
                     <thead>
                         <tr>
-                            <th>Vulnerability</th>
-                            <th>At 10 Users</th>
-                            <th>At 1000 Users</th>
+                            <th>VULNERABILITY</th>
+                            <th>@ 10 USERS</th>
+                            <th>@ 1000 USERS</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Hallucinations</td>
-                            <td style="color: var(--accent-yellow);">Annoying</td>
-                            <td style="color: var(--accent-red);">Lawsuit</td>
+                            <td style="color: var(--brutal-yellow);">⚠ Annoying</td>
+                            <td style="color: var(--brutal-red);">⛔ LAWSUIT</td>
                         </tr>
                         <tr>
                             <td>Latency</td>
-                            <td style="color: var(--accent-yellow);">Acceptable</td>
-                            <td style="color: var(--accent-red);">Churn</td>
+                            <td style="color: var(--brutal-yellow);">⚠ Acceptable</td>
+                            <td style="color: var(--brutal-red);">⛔ CHURN</td>
                         </tr>
                         <tr>
                             <td>Costs</td>
-                            <td style="color: var(--accent-green);">$10/mo</td>
-                            <td style="color: var(--accent-red);">$1000/mo</td>
+                            <td style="color: var(--matrix-green);">✓ $10/mo</td>
+                            <td style="color: var(--brutal-red);">⛔ $1000/mo</td>
                         </tr>
                     </tbody>
                 </table>
+                <p class="citation" style="margin-top: 1em;">
+                    <a href="https://www.infoq.com/articles/scaling-microservices/" target="_blank">Scaling Lessons from Industry</a>
+                </p>
             </section>
 
             <section>
-                <h3>The Mindset Shift</h3>
-                <div class="comparison">
-                    <div class="comparison-item">
-                        <p style="color: var(--accent-yellow);">Vibe Coder</p>
-                        <p class="quote">"Does it work?"</p>
+                <h3>THE MINDSET SHIFT</h3>
+                <div style="display: flex; justify-content: center; gap: 2em; margin: 1.5em 0;">
+                    <div class="info-box yellow" style="width: 300px;">
+                        <div style="font-size: 0.8em; color: var(--brutal-gray); margin-bottom: 0.5em;">VIBE CODER</div>
+                        <div class="quote" style="font-size: 1.2em; border-color: var(--brutal-yellow);">"Does it work?"</div>
                     </div>
-                    <div class="comparison-item">
-                        <p style="color: var(--accent-green);">CTO</p>
-                        <p class="quote">"Will it still work at 100x scale?"</p>
+                    <div class="info-box green" style="width: 300px;">
+                        <div style="font-size: 0.8em; color: var(--brutal-gray); margin-bottom: 0.5em;">CTO</div>
+                        <div class="quote" style="font-size: 1.2em;">"Will it work at 100x?"</div>
                     </div>
                 </div>
             </section>
@@ -598,10 +1436,12 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
             <!-- SECTION 5: CLAUDEKIT WORKFLOW (Slides 27-36) -->
             <!-- ============================================ -->
 
-            <section>
-                <p class="section-title">The Solution</p>
-                <h2>Building ClaudeKit from Pain</h2>
-                <p class="fragment" style="color: #8b949e;">What I wish I had</p>
+            <section class="matrix-bg">
+                <p class="section-title">// THE SOLUTION</p>
+                <h2>BUILDING CLAUDEKIT FROM PAIN</h2>
+                <p class="fragment" style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace;">
+                    // What I wish I had
+                </p>
                 <aside class="notes">
                     [15 min section] This is the main value section.
                     ClaudeKit is my answer to all these problems.
@@ -610,10 +1450,22 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
             </section>
 
             <section>
-                <h3>The Workflow</h3>
-                <div class="workflow-box" style="font-size: 1em;">
-                    /docs:init &#8594; /brainstorm &#8594; /plan &#8594; /clear &#8594; /code:auto
+                <h3>THE WORKFLOW</h3>
+                <!-- Main Workflow Flowchart -->
+                <div class="flowchart" style="margin: 1.5em 0;">
+                    <div class="flow-node active">/docs:init</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node">/brainstorm</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node">/plan</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node warning">/clear</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active">/code:auto</div>
                 </div>
+                <p style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace; font-size: 0.9em;">
+                    [The complete AI-assisted development pipeline]
+                </p>
                 <aside class="notes">
                     This is the core workflow. Write it down.
                     Each command solves a specific problem.
@@ -621,90 +1473,159 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
             </section>
 
             <section>
-                <h3>/docs:init</h3>
-                <p>Scan & analyze your codebase</p>
-                <ul>
-                    <li class="fragment">Generate structure docs</li>
-                    <li class="fragment">Capture architecture patterns</li>
-                    <li class="fragment">Document code standards</li>
-                </ul>
-                <div class="video-placeholder fragment">
+                <h3 style="color: var(--matrix-green);">/docs:init</h3>
+                <p style="color: var(--brutal-gray); font-size: 0.9em;">Scan & analyze your codebase</p>
+                <div class="info-grid" style="max-width: 650px; margin: 1em auto;">
+                    <div class="info-box teal fragment" style="padding: 0.8em;">
+                        <div class="icon">📁</div>
+                        <div class="value" style="color: var(--matrix-teal); font-size: 0.9em;">STRUCTURE</div>
+                        <div class="label">Auto docs</div>
+                    </div>
+                    <div class="info-box teal fragment" style="padding: 0.8em;">
+                        <div class="icon">🏗️</div>
+                        <div class="value" style="color: var(--matrix-teal); font-size: 0.9em;">PATTERNS</div>
+                        <div class="label">Architecture</div>
+                    </div>
+                    <div class="info-box teal fragment" style="padding: 0.8em;">
+                        <div class="icon">📏</div>
+                        <div class="value" style="color: var(--matrix-teal); font-size: 0.9em;">STANDARDS</div>
+                        <div class="label">Conventions</div>
+                    </div>
+                </div>
+                <div class="video-placeholder fragment" style="padding: 1em;">
                     /docs:init demo
                 </div>
             </section>
 
             <section>
-                <h3>Why /docs:init?</h3>
-                <p class="quote">
+                <h3>WHY /docs:init?</h3>
+                <div class="quote">
                     "I was tired of repeating context"
-                </p>
-                <p class="fragment" style="margin-top: 1em;">
+                </div>
+                <div class="fragment" style="margin-top: 1.5em;">
+                    <div class="flowchart">
+                        <div class="flow-node danger">NO DOCS</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-node danger">AI GUESSES</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-node danger">WRONG CODE</div>
+                    </div>
+                </div>
+                <p class="fragment" style="margin-top: 1em; color: var(--matrix-green);">
                     AI needs to understand before it acts
                 </p>
             </section>
 
             <section>
-                <h3>/brainstorm</h3>
-                <p>AI challenges your thinking</p>
-                <p class="fragment" style="color: var(--accent-red); margin-top: 1em;">
-                    Yes-men are dangerous
-                </p>
-                <div class="video-placeholder fragment">
+                <h3 style="color: var(--matrix-cyan);">/brainstorm</h3>
+                <p style="color: var(--brutal-gray); font-size: 0.9em;">AI challenges your thinking</p>
+                <div style="display: flex; justify-content: center; gap: 1.5em; margin: 1em 0;">
+                    <div class="info-box red fragment" style="width: 160px; padding: 0.8em;">
+                        <div class="icon">👍</div>
+                        <div class="value" style="color: var(--brutal-red); font-size: 0.9em;">YES-MEN</div>
+                        <div class="label">Dangerous</div>
+                    </div>
+                    <div class="info-box green fragment" style="width: 160px; padding: 0.8em;">
+                        <div class="icon">🤔</div>
+                        <div class="value" style="color: var(--matrix-green); font-size: 0.9em;">CHALLENGERS</div>
+                        <div class="label">Valuable</div>
+                    </div>
+                </div>
+                <div class="video-placeholder fragment" style="padding: 1em;">
                     /brainstorm demo
                 </div>
             </section>
 
             <section>
-                <h3>/plan</h3>
-                <p>Plans in files, not in heads</p>
-                <ul>
-                    <li class="fragment">Progressive disclosure</li>
-                    <li class="fragment">Version controlled decisions</li>
-                    <li class="fragment">Context preservation</li>
-                </ul>
-                <div class="video-placeholder fragment">
+                <h3 style="color: var(--matrix-cyan);">/plan</h3>
+                <p style="color: var(--brutal-gray); font-size: 0.9em;">Plans in files, not in heads</p>
+                <div class="info-grid" style="max-width: 650px; margin: 1em auto;">
+                    <div class="info-box green fragment" style="padding: 0.8em;">
+                        <div class="icon">📋</div>
+                        <div class="value" style="color: var(--matrix-green);">Phased</div>
+                        <div class="label">Disclosure</div>
+                    </div>
+                    <div class="info-box green fragment" style="padding: 0.8em;">
+                        <div class="icon">🔄</div>
+                        <div class="value" style="color: var(--matrix-green);">Tracked</div>
+                        <div class="label">Versions</div>
+                    </div>
+                    <div class="info-box green fragment" style="padding: 0.8em;">
+                        <div class="icon">💾</div>
+                        <div class="value" style="color: var(--matrix-green);">Saved</div>
+                        <div class="label">Context</div>
+                    </div>
+                </div>
+                <div class="video-placeholder fragment" style="padding: 1em;">
                     /plan demo
                 </div>
             </section>
 
             <section>
-                <h3>/clear</h3>
-                <p>Fresh context window</p>
-                <p style="color: #8b949e;">Context rot is real</p>
-                <div class="workflow-box fragment" style="margin-top: 1em;">
-                    Long conversation &#8594; /clear &#8594; Fresh start
+                <h3 style="color: var(--brutal-yellow);">/clear</h3>
+                <p style="color: var(--brutal-gray);">Fresh context window</p>
+                <div class="flowchart" style="margin: 1.5em 0;">
+                    <div class="flow-node danger">LONG CONVO</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node warning">/clear</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active">FRESH START</div>
+                </div>
+                <p style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace; font-size: 0.9em;">
+                    Context rot is real • Reset to peak performance
+                </p>
+            </section>
+
+            <section>
+                <h3 style="color: var(--matrix-green);">/code:auto</h3>
+                <p style="color: var(--brutal-gray); font-size: 0.9em;">18 years of workflow in one command</p>
+                <div class="flowchart fragment" style="margin: 1em 0;">
+                    <div class="flow-node active">
+                        <div style="font-size: 0.55em; color: var(--brutal-gray);">STEP 1</div>
+                        CODE
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node warning">
+                        <div style="font-size: 0.55em; color: var(--brutal-gray);">STEP 2</div>
+                        TEST
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node">
+                        <div style="font-size: 0.55em; color: var(--brutal-gray);">STEP 3</div>
+                        REVIEW
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active">
+                        <div style="font-size: 0.55em; color: var(--brutal-gray);">STEP 4</div>
+                        ITERATE
+                    </div>
                 </div>
             </section>
 
             <section>
-                <h3>/code:auto</h3>
-                <p>18 years of workflow in one command</p>
-                <div class="timeline fragment" style="margin-top: 1em;">
-                    <span class="timeline-item t-green">Code</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-yellow">Test</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-green">Review</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-green">Iterate</span>
+                <h3>THE PRINCIPLES</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.6em; max-width: 500px; margin: 0.8em auto;">
+                    <div class="info-box green fragment" style="display: flex; align-items: center; gap: 0.8em; padding: 0.6em 1em;">
+                        <div style="font-size: 1.2em; font-weight: bold; color: var(--matrix-green); min-width: 80px;">YAGNI</div>
+                        <div style="text-align: left; color: var(--brutal-gray); font-size: 0.85em;">You Aren't Gonna Need It</div>
+                    </div>
+                    <div class="info-box green fragment" style="display: flex; align-items: center; gap: 0.8em; padding: 0.6em 1em;">
+                        <div style="font-size: 1.2em; font-weight: bold; color: var(--matrix-green); min-width: 80px;">KISS</div>
+                        <div style="text-align: left; color: var(--brutal-gray); font-size: 0.85em;">Keep It Simple, Stupid</div>
+                    </div>
+                    <div class="info-box green fragment" style="display: flex; align-items: center; gap: 0.8em; padding: 0.6em 1em;">
+                        <div style="font-size: 1.2em; font-weight: bold; color: var(--matrix-green); min-width: 80px;">DRY</div>
+                        <div style="text-align: left; color: var(--brutal-gray); font-size: 0.85em;">Don't Repeat Yourself</div>
+                    </div>
                 </div>
-            </section>
-
-            <section>
-                <h3>The Principles</h3>
-                <ul>
-                    <li class="fragment"><strong>YAGNI</strong> - You Aren't Gonna Need It</li>
-                    <li class="fragment"><strong>KISS</strong> - Keep It Simple, Stupid</li>
-                    <li class="fragment"><strong>DRY</strong> - Don't Repeat Yourself</li>
-                </ul>
-                <p class="fragment" style="margin-top: 1em; color: #8b949e;">
-                    Who knew what these meant?
+                <p class="citation" style="margin-top: 0.8em;">
+                    <a href="https://martinfowler.com/bliki/Yagni.html" target="_blank">Martin Fowler on YAGNI</a>
                 </p>
             </section>
 
             <section class="interactive">
-                <h3>Quick Poll</h3>
-                <p>Which command would have saved you this month?</p>
+                <h3 style="color: var(--matrix-cyan);">QUICK POLL</h3>
+                <p style="color: var(--brutal-white);">Which command would have saved you this month?</p>
                 <div class="poll-options">
                     <div class="poll-option">A) /docs:init</div>
                     <div class="poll-option">B) /brainstorm</div>
@@ -717,47 +1638,73 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
             <!-- SECTION 6: ROADMAP FORWARD (Slides 37-40) -->
             <!-- ============================================ -->
 
-            <section>
-                <p class="section-title">Looking Ahead</p>
-                <h2>When to Hire Devs</h2>
-                <ul>
-                    <li class="fragment">Signs you've outgrown solo + AI</li>
-                    <li class="fragment">What to look for: AI-fluent engineers</li>
-                    <li class="fragment">Humans who verify, not just generate</li>
-                </ul>
-            </section>
-
-            <section>
-                <h3>The Checklist</h3>
-                <ol class="checklist">
-                    <li class="fragment">Document before you code</li>
-                    <li class="fragment">Plan before you build</li>
-                    <li class="fragment">Clear before you execute</li>
-                    <li class="fragment">Test everything</li>
-                    <li class="fragment">Human review all security</li>
-                </ol>
-            </section>
-
-            <section>
-                <h3>Cool Demo &#8594; Scalable Product</h3>
-                <div class="timeline">
-                    <span class="timeline-item t-yellow">Demo</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-yellow">Validate</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-green">Harden</span>
-                    <span class="timeline-arrow">&#8594;</span>
-                    <span class="timeline-item t-green">Scale</span>
+            <section class="matrix-bg">
+                <p class="section-title">// LOOKING AHEAD</p>
+                <h2>WHEN TO HIRE DEVS</h2>
+                <div class="info-grid" style="max-width: 600px; margin: 1em auto;">
+                    <div class="info-box yellow fragment" style="padding: 0.8em;">
+                        <div class="icon">📈</div>
+                        <div class="value" style="color: var(--brutal-yellow); font-size: 0.9em;">SIGNS</div>
+                        <div class="label">Outgrown AI</div>
+                    </div>
+                    <div class="info-box green fragment" style="padding: 0.8em;">
+                        <div class="icon">🎯</div>
+                        <div class="value" style="color: var(--matrix-green); font-size: 0.9em;">LOOK FOR</div>
+                        <div class="label">AI-fluent</div>
+                    </div>
+                    <div class="info-box teal fragment" style="padding: 0.8em;">
+                        <div class="icon">✅</div>
+                        <div class="value" style="color: var(--matrix-teal); font-size: 0.9em;">VERIFY</div>
+                        <div class="label">Not generate</div>
+                    </div>
                 </div>
             </section>
 
-            <section data-background-gradient="radial-gradient(circle, #2d1b1b 0%, #0d1117 100%)">
-                <h3>The Cost of Not Doing This</h3>
-                <p class="dramatic" style="margin-top: 1em;">
-                    I killed IndieBoosting.
-                </p>
-                <p class="fragment" style="font-size: 1.3em; margin-top: 1em;">
-                    Don't kill yours.
+            <section>
+                <h3>THE CHECKLIST</h3>
+                <div style="max-width: 600px; margin: 1em auto; text-align: left;">
+                    <ul class="checklist">
+                        <li class="fragment">Document before you code</li>
+                        <li class="fragment">Plan before you build</li>
+                        <li class="fragment">Clear before you execute</li>
+                        <li class="fragment">Test everything</li>
+                        <li class="fragment">Human review all security</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>COOL DEMO → SCALABLE PRODUCT</h3>
+                <div class="flowchart" style="margin: 1.5em 0;">
+                    <div class="flow-node warning">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">PHASE 1</div>
+                        DEMO
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node warning">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">PHASE 2</div>
+                        VALIDATE
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">PHASE 3</div>
+                        HARDEN
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-node active">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">PHASE 4</div>
+                        SCALE
+                    </div>
+                </div>
+            </section>
+
+            <section data-background-gradient="radial-gradient(circle, #1a0d0d 0%, #0a0a0a 100%)">
+                <h3>THE COST OF NOT DOING THIS</h3>
+                <div class="quote danger" style="font-size: 1.8em; margin-top: 1em;">
+                    I KILLED INDIEBOOSTING.
+                </div>
+                <p class="fragment" style="font-size: 1.5em; margin-top: 1.5em; color: var(--matrix-green);">
+                    DON'T KILL YOURS.
                 </p>
             </section>
 
@@ -765,14 +1712,14 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
             <!-- SECTION 7: CLOSING (Slides 41-43) -->
             <!-- ============================================ -->
 
-            <section>
-                <p class="section-title">The Confession</p>
-                <h2>I'm Still Learning</h2>
-                <p class="fragment" style="margin-top: 1em;">
+            <section class="matrix-bg">
+                <p class="section-title">// THE CONFESSION</p>
+                <h2>I'M STILL LEARNING</h2>
+                <p class="fragment" style="margin-top: 1em; font-family: 'IBM Plex Mono', monospace; color: var(--matrix-cyan);">
                     ClaudeKit is my notebook
                 </p>
-                <p class="fragment" style="color: #8b949e;">
-                    Every bug I fix becomes a workflow
+                <p class="fragment" style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace;">
+                    // Every bug I fix becomes a workflow
                 </p>
                 <aside class="notes">
                     [3 min closing] Be humble here. Show vulnerability.
@@ -781,30 +1728,43 @@ const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [use
             </section>
 
             <section>
-                <h2>The Invitation</h2>
-                <p style="font-size: 1.2em;">What mistakes have you made?</p>
-                <p class="fragment" style="margin-top: 1em;">Let's talk after.</p>
-                <p class="fragment" style="color: var(--accent-purple); margin-top: 1em;">
-                    Build in Public Vietnam
-                </p>
+                <h2>THE INVITATION</h2>
+                <p style="font-size: 1.3em; color: var(--brutal-white);">What mistakes have you made?</p>
+                <p class="fragment" style="margin-top: 1.5em; color: var(--matrix-teal);">Let's talk after.</p>
+                <div class="fragment" style="margin-top: 1.5em; padding: 1em; border: 2px solid var(--matrix-cyan);">
+                    <p style="color: var(--matrix-cyan); font-family: 'IBM Plex Mono', monospace;">
+                        BUILD IN PUBLIC VIETNAM
+                    </p>
+                </div>
                 <aside class="notes">
                     ENGAGE: Ask them to share their stories.
                     Mention you'll be available after for Q&A.
                 </aside>
             </section>
 
-            <section>
-                <h2>Resources</h2>
-                <div class="qr-placeholder">
-                    [QR Code]<br>
-                    Articles + ClaudeKit + Community
+            <section class="matrix-bg">
+                <h2>THANK YOU</h2>
+                <div class="closing-layout" style="margin: 0.8em 0;">
+                    <div style="text-align: center;">
+                        <div class="qr-placeholder" style="width: 140px; height: 140px; padding: 0;">
+                            <img src="images/qr-code.png" alt="QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <p style="font-size: 0.7em; color: var(--brutal-gray); margin-top: 0.3em;">Scan for resources</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <img src="images/profile.jpg" alt="Duy Nguyen" class="profile-img" style="width: 80px; height: 80px; margin-bottom: 0.5em;">
+                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.85em; margin: 0;">
+                            <span style="color: var(--matrix-green);">$</span> whoami<br>
+                            <span style="color: var(--matrix-cyan);">Duy Nguyen</span><br>
+                            <span style="color: var(--brutal-gray);">@goon_nguyen</span>
+                        </p>
+                    </div>
                 </div>
-                <p style="margin-top: 1em;">
-                    Duy Nguyen<br>
-                    <span style="color: #8b949e;">@duynguyen on X/Twitter</span>
+                <p style="font-size: 1.5em; color: var(--matrix-green); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 0.5em;">
+                    BUILD IN PUBLIC VIETNAM
                 </p>
-                <p class="fragment" style="font-size: 1.5em; margin-top: 1em; color: var(--accent-green);">
-                    Thank You
+                <p style="font-family: 'IBM Plex Mono', monospace; color: var(--brutal-gray); font-size: 0.75em;">
+                    [Session terminated successfully]
                 </p>
                 <aside class="notes">
                     [END] Total: 45-60 min. Point to QR code.
