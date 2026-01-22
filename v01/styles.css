@@ -1,0 +1,923 @@
+/* ═══════════════════════════════════════════════════════════════
+   BRUTALIST MATRIX DESIGN SYSTEM
+   Style: Raw, bold, high-contrast with green/teal matrix aesthetic
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+    /* Matrix Color Palette */
+    --matrix-black: #0a0a0a;
+    --matrix-dark: #0d1a0d;
+    --matrix-green: #00ff41;
+    --matrix-teal: #0abab5;
+    --matrix-cyan: #00d4ff;
+    --matrix-lime: #39ff14;
+    --matrix-dim: #1a3a1a;
+
+    /* Accent Colors */
+    --brutal-red: #ff3333;
+    --brutal-orange: #ff6600;
+    --brutal-yellow: #ffcc00;
+    --brutal-white: #f0f0f0;
+    --brutal-gray: #666;
+
+    /* Reveal.js Overrides */
+    --r-background-color: var(--matrix-black);
+    --r-main-color: var(--brutal-white);
+    --r-heading-color: var(--matrix-green);
+    --r-link-color: var(--matrix-cyan);
+    --r-selection-background-color: var(--matrix-teal);
+}
+
+/* Base Typography - Brutalist */
+.reveal {
+    font-family: 'Space Grotesk', 'Arial Black', sans-serif;
+    background: var(--matrix-black);
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 20px var(--matrix-green), 0 0 40px rgba(0, 255, 65, 0.3);
+}
+
+.reveal h1 {
+    font-size: 3em;
+    border-bottom: 4px solid var(--matrix-green);
+    padding-bottom: 0.2em;
+    display: inline-block;
+}
+.reveal h2 {
+    font-size: 2em;
+    color: var(--matrix-teal);
+}
+.reveal h3 {
+    font-size: 1.5em;
+    color: var(--matrix-cyan);
+}
+
+/* Glowing Text Effect */
+.glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+}
+
+/* Subtitle Styling */
+.reveal .subtitle {
+    color: var(--matrix-cyan);
+    font-size: 1.3em;
+    margin-top: 0.5em;
+    font-family: 'IBM Plex Mono', monospace;
+    border: 2px solid var(--matrix-teal);
+    padding: 0.3em 0.8em;
+    display: inline-block;
+}
+
+.reveal .speaker-info {
+    font-size: 0.9em;
+    color: var(--brutal-gray);
+    margin-top: 2em;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Dramatic Text - Brutalist */
+.reveal .dramatic {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--brutal-yellow);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-left: 6px solid var(--brutal-yellow);
+    padding-left: 0.5em;
+    text-shadow: 3px 3px 0 var(--matrix-dark);
+}
+
+.reveal .hook-text {
+    font-size: 1.6em;
+    line-height: 1.5;
+    color: var(--brutal-white);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   STATISTICS & DATA VISUALIZATION
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .stat-big {
+    font-size: 4em;
+    font-weight: 700;
+    color: var(--matrix-green);
+    font-family: 'IBM Plex Mono', monospace;
+    text-shadow: 0 0 30px var(--matrix-green);
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 20px var(--matrix-green); }
+    50% { text-shadow: 0 0 40px var(--matrix-green), 0 0 60px var(--matrix-teal); }
+}
+
+.reveal .stat-red {
+    color: var(--brutal-red);
+    text-shadow: 0 0 30px var(--brutal-red);
+}
+
+.reveal .stat-label {
+    font-size: 0.9em;
+    color: var(--brutal-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/* Comparison Layout - Brutalist Cards */
+.reveal .comparison {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin: 1.5em 0;
+}
+
+.reveal .comparison-item {
+    text-align: center;
+    padding: 1.5em;
+    background: var(--matrix-dark);
+    border: 3px solid var(--matrix-dim);
+    position: relative;
+}
+
+.reveal .comparison-item::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, var(--matrix-green), transparent, var(--matrix-teal));
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CODE BLOCKS - Terminal Style
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal pre {
+    width: 100%;
+    font-size: 0.75em;
+    background: #0d0d0d;
+    border: 2px solid var(--matrix-dim);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.reveal pre::before {
+    content: '$ ';
+    color: var(--matrix-green);
+}
+
+.reveal pre code {
+    max-height: 500px;
+    font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+    padding: 1.2em;
+    background: transparent;
+}
+
+.reveal .code-bad {
+    background: rgba(255, 51, 51, 0.1);
+    border-left: 4px solid var(--brutal-red);
+}
+
+.reveal .code-bad,
+.reveal .code-bad code,
+.reveal .code-bad code *,
+.reveal .code-bad table,
+.reveal .code-bad .hljs-ln {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.reveal .code-bad {
+    border-left: 4px solid var(--brutal-red) !important;
+}
+
+.reveal .code-good {
+    background: rgba(0, 255, 65, 0.1);
+    border-left: 4px solid var(--matrix-green);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TABLES - Data Grid Style
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal table {
+    margin: 1.5em auto;
+    border-collapse: collapse;
+    font-size: 0.85em;
+    font-family: 'IBM Plex Mono', monospace;
+    border: 2px solid var(--matrix-green);
+}
+
+.reveal table th,
+.reveal table td {
+    padding: 0.8em 1.2em;
+    border: 1px solid var(--matrix-dim);
+}
+
+.reveal table th {
+    background: var(--matrix-dark);
+    color: var(--matrix-green);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.reveal table tr:hover {
+    background: rgba(0, 255, 65, 0.05);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   WORKFLOW & FLOWCHART COMPONENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .workflow-box {
+    background: var(--matrix-dark);
+    border: 3px solid var(--matrix-green);
+    padding: 1em 1.5em;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.1em;
+    color: var(--matrix-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2), inset 0 0 20px rgba(0, 255, 65, 0.05);
+}
+
+/* Flowchart Styles */
+.flowchart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 1.5em 0;
+}
+
+.flow-node {
+    background: var(--matrix-dark);
+    border: 2px solid var(--matrix-teal);
+    padding: 0.8em 1.2em;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9em;
+    color: var(--matrix-cyan);
+    position: relative;
+}
+
+.flow-node.active {
+    border-color: var(--matrix-green);
+    color: var(--matrix-green);
+    box-shadow: 0 0 15px var(--matrix-green);
+}
+
+.flow-node.danger {
+    border-color: var(--brutal-red);
+    color: var(--brutal-red);
+}
+
+.flow-node.warning {
+    border-color: var(--brutal-yellow);
+    color: var(--brutal-yellow);
+}
+
+.flow-arrow {
+    color: var(--matrix-teal);
+    font-size: 1.5em;
+    padding: 0 0.3em;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Infographic Boxes */
+.info-box {
+    background: linear-gradient(135deg, var(--matrix-dark) 0%, var(--matrix-black) 100%);
+    border: 2px solid;
+    padding: 1.5em;
+    margin: 0.5em;
+    text-align: center;
+}
+
+.info-box.green { border-color: var(--matrix-green); }
+.info-box.red { border-color: var(--brutal-red); }
+.info-box.yellow { border-color: var(--brutal-yellow); }
+.info-box.teal { border-color: var(--matrix-teal); }
+
+.info-box .icon {
+    font-size: 2em;
+    margin-bottom: 0.3em;
+}
+
+.info-box .label {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brutal-gray);
+}
+
+.info-box .value {
+    font-size: 1.8em;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Grid Layout for Infographics */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+    margin: 1em 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   VIDEO/DEMO PLACEHOLDERS
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .video-placeholder {
+    background: var(--matrix-dark);
+    border: 3px dashed var(--matrix-dim);
+    padding: 3em;
+    text-align: center;
+    color: var(--brutal-gray);
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal .video-placeholder::before {
+    content: "▶ DEMO";
+    display: block;
+    font-size: 1.3em;
+    color: var(--matrix-teal);
+    margin-bottom: 0.5em;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.2em;
+}
+
+.reveal .video-placeholder::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+    animation: scan-line 3s infinite;
+}
+
+@keyframes scan-line {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   QUOTES & CALLOUTS
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .quote {
+    font-size: 1.5em;
+    font-weight: 500;
+    border-left: 6px solid var(--matrix-green);
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    background: rgba(0, 255, 65, 0.05);
+    color: var(--brutal-white);
+}
+
+.reveal .quote.danger {
+    border-color: var(--brutal-red);
+    background: rgba(255, 51, 51, 0.05);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TIMELINE - Horizontal Flow
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .timeline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 1em 0;
+}
+
+.reveal .timeline-item {
+    padding: 0.6em 1.2em;
+    font-size: 0.95em;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    border: 2px solid;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.reveal .timeline-arrow {
+    color: var(--matrix-teal);
+    font-size: 1.3em;
+    padding: 0 0.2em;
+}
+
+.reveal .t-green {
+    border-color: var(--matrix-green);
+    color: var(--matrix-green);
+    background: rgba(0, 255, 65, 0.1);
+}
+.reveal .t-yellow {
+    border-color: var(--brutal-yellow);
+    color: var(--brutal-yellow);
+    background: rgba(255, 204, 0, 0.1);
+}
+.reveal .t-red {
+    border-color: var(--brutal-red);
+    color: var(--brutal-red);
+    background: rgba(255, 51, 51, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CHECKLIST - Terminal Style
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .checklist {
+    text-align: left;
+    font-size: 1.1em;
+    list-style: none;
+    padding-left: 0;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.reveal .checklist li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid var(--matrix-dim);
+}
+
+.reveal .checklist li::before {
+    content: "[_]";
+    color: var(--matrix-green);
+    margin-right: 0.8em;
+    font-weight: 600;
+}
+
+.reveal .checklist li.checked::before {
+    content: "[✓]";
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INTERACTIVE SECTIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .interactive {
+    background: linear-gradient(135deg, var(--matrix-dark) 0%, rgba(10, 186, 181, 0.1) 100%);
+    border: 3px solid var(--matrix-teal);
+    padding: 2em;
+    position: relative;
+}
+
+.reveal .interactive::before {
+    content: 'INTERACTIVE';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--matrix-black);
+    padding: 0 10px;
+    color: var(--matrix-teal);
+    font-size: 0.7em;
+    letter-spacing: 0.2em;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.reveal .poll-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    margin-top: 1.5em;
+}
+
+.reveal .poll-option {
+    background: var(--matrix-dark);
+    border: 2px solid var(--matrix-dim);
+    padding: 1em;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--matrix-cyan);
+    transition: all 0.2s;
+}
+
+.reveal .poll-option:hover {
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   QR CODE & RESOURCES
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .qr-placeholder {
+    width: 200px;
+    height: 200px;
+    background: var(--brutal-white);
+    margin: 1em auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--matrix-black);
+    font-size: 0.8em;
+    border: 4px solid var(--matrix-green);
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION TITLES
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .section-title {
+    color: var(--matrix-teal);
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    margin-bottom: 1em;
+    font-family: 'IBM Plex Mono', monospace;
+    border: 1px solid var(--matrix-teal);
+    padding: 0.3em 1em;
+    display: inline-block;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FRAGMENT HIGHLIGHTS
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal .fragment.highlight-red.visible {
+    color: var(--brutal-red);
+    text-shadow: 0 0 10px var(--brutal-red);
+}
+
+.reveal .fragment.highlight-green.visible {
+    color: var(--matrix-green);
+    text-shadow: 0 0 10px var(--matrix-green);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIES DIAGRAM - Visual Impact
+   ═══════════════════════════════════════════════════════════════ */
+
+.lies-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    margin: 2em 0;
+}
+
+.lie-card {
+    background: var(--matrix-dark);
+    border: 3px solid var(--brutal-red);
+    padding: 1.5em;
+    width: 250px;
+    text-align: center;
+    position: relative;
+}
+
+.lie-card::before {
+    content: attr(data-number);
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--brutal-red);
+    color: var(--matrix-black);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.lie-card .lie-title {
+    color: var(--brutal-red);
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    font-size: 1.1em;
+}
+
+.lie-card .lie-desc {
+    color: var(--brutal-gray);
+    font-size: 0.9em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MATRIX RAIN EFFECT (Background)
+   ═══════════════════════════════════════════════════════════════ */
+
+.matrix-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.matrix-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 65, 0.03) 2px,
+            rgba(0, 255, 65, 0.03) 4px
+        );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CITATION LINKS
+   ═══════════════════════════════════════════════════════════════ */
+
+.citation {
+    font-size: 0.7em;
+    color: var(--brutal-gray);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.citation a {
+    color: var(--matrix-cyan);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--matrix-cyan);
+}
+
+.citation a:hover {
+    color: var(--matrix-green);
+    border-color: var(--matrix-green);
+}
+
+/* Progress Bar Styling */
+.reveal .progress {
+    background: var(--matrix-dim);
+    height: 4px;
+}
+
+.reveal .progress span {
+    background: var(--matrix-green);
+    box-shadow: 0 0 10px var(--matrix-green);
+}
+
+/* Slide Number - positioned to avoid nav arrows */
+.reveal .slide-number {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--matrix-teal);
+    background: var(--matrix-black);
+    font-size: 0.7em;
+    right: auto !important;
+    left: 20px !important;
+    bottom: 20px !important;
+    padding: 0.3em 0.6em;
+    border: 1px solid var(--matrix-dim);
+}
+
+/* Global slide padding fixes */
+.reveal .slides section {
+    padding: 20px 40px !important;
+    box-sizing: border-box;
+}
+
+/* Prevent text wrapping for single-line elements */
+.reveal .no-wrap {
+    white-space: nowrap !important;
+}
+
+/* Force horizontal layout for flowcharts - NO SCROLLBARS */
+.flowchart {
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+    justify-content: center;
+    gap: 0.2em;
+    max-width: 100%;
+}
+.flowchart .flow-node {
+    flex-shrink: 1;
+    min-width: auto;
+    padding: 0.3em 0.4em;
+    font-size: 0.55em;
+    white-space: nowrap;
+}
+.flowchart .flow-node > div {
+    font-size: 0.9em !important;
+}
+.flowchart .flow-arrow {
+    flex-shrink: 0;
+    font-size: 0.8em;
+    padding: 0 0.05em;
+}
+
+/* Info box fixes - NO TEXT WRAPPING */
+.info-box {
+    padding: 0.6em;
+    min-width: 0;
+    overflow: visible;
+}
+.info-box .value {
+    font-size: 0.75em;
+    white-space: nowrap;
+    overflow: visible;
+}
+.info-box .label {
+    font-size: 0.45em;
+    white-space: nowrap;
+    line-height: 1.2;
+    overflow: visible;
+}
+.info-box .icon {
+    font-size: 1.2em;
+}
+
+/* Force cards in single row - compact */
+.info-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center;
+    gap: 0.5em;
+}
+.info-grid .info-box {
+    flex: 1;
+    max-width: 200px;
+    min-width: 120px;
+}
+
+/* Lies container fix */
+.lies-container {
+    flex-wrap: nowrap !important;
+    gap: 0.6em;
+    overflow: visible !important;
+}
+.lie-card {
+    width: auto;
+    min-width: 140px;
+    max-width: 180px;
+    padding: 0.7em;
+    font-size: 0.9em;
+}
+
+/* Comparison layout fix */
+.reveal .comparison {
+    flex-wrap: nowrap !important;
+    gap: 1em;
+    overflow: visible !important;
+}
+.reveal .comparison-item {
+    flex: 1;
+    max-width: 280px;
+    padding: 0.8em;
+}
+
+/* Table fix for smaller screens */
+.reveal table {
+    font-size: 0.75em;
+    margin: 1em auto;
+}
+.reveal table th,
+.reveal table td {
+    padding: 0.5em 0.8em;
+}
+
+/* Quote size fix */
+.reveal .quote {
+    font-size: 1.2em;
+    padding: 0.4em 0.8em;
+}
+.reveal .quote.danger {
+    font-size: 1.4em;
+}
+
+/* Stat big size reduction */
+.reveal .stat-big {
+    font-size: 3.5em;
+}
+
+/* Workflow box fix */
+.reveal .workflow-box {
+    padding: 0.6em 1em;
+    font-size: 0.95em;
+}
+
+/* Video placeholder smaller */
+.reveal .video-placeholder {
+    padding: 1.5em;
+    font-size: 0.9em;
+}
+
+/* Poll options fix */
+.reveal .poll-options {
+    gap: 0.8em;
+}
+.reveal .poll-option {
+    padding: 0.8em;
+    font-size: 0.9em;
+}
+
+/* Checklist fix */
+.reveal .checklist {
+    font-size: 0.95em;
+}
+.reveal .checklist li {
+    padding: 0.4em 0;
+}
+
+/* Timeline fix */
+.reveal .timeline {
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+    gap: 0.3em;
+}
+.reveal .timeline-item {
+    padding: 0.3em 0.5em;
+    font-size: 0.7em;
+    white-space: nowrap;
+}
+
+/* Interactive section fix */
+.reveal .interactive {
+    padding: 1.5em;
+}
+
+/* QR placeholder fix */
+.reveal .qr-placeholder {
+    width: 160px;
+    height: 160px;
+    font-size: 0.7em;
+}
+.reveal .qr-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Profile image styling */
+.reveal .profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--matrix-green);
+    box-shadow: 0 0 20px var(--matrix-green);
+    object-fit: cover;
+}
+
+/* Dramatic text fix */
+.reveal .dramatic {
+    font-size: 1.4em;
+    line-height: 1.3;
+}
+
+/* Section title smaller */
+.reveal .section-title {
+    font-size: 0.6em;
+    padding: 0.2em 0.8em;
+    margin-bottom: 0.8em;
+}
+
+/* Speaker info fix */
+.reveal .speaker-info {
+    font-size: 0.8em;
+    margin-top: 1.5em;
+}
+
+/* Subtitle fix */
+.reveal .subtitle {
+    font-size: 1.1em;
+    padding: 0.2em 0.6em;
+}
+
+/* Code block fix */
+.reveal pre {
+    font-size: 0.65em;
+    margin: 0.8em 0;
+}
+.reveal pre code {
+    padding: 0.8em;
+    max-height: 350px;
+}
+
+/* H2/H3 size adjustment */
+.reveal h2 {
+    font-size: 1.6em;
+    margin-bottom: 0.5em;
+}
+.reveal h3 {
+    font-size: 1.3em;
+    margin-bottom: 0.5em;
+}
+
+/* Closing slide layout */
+.closing-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+.closing-info {
+    text-align: left;
+}

@@ -21,916 +21,8 @@
     <!-- Highlight.js for code syntax with SRI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.min.css" crossorigin="anonymous">
 
-    <style>
-        /* ═══════════════════════════════════════════════════════════════
-           BRUTALIST MATRIX DESIGN SYSTEM
-           Style: Raw, bold, high-contrast with green/teal matrix aesthetic
-           ═══════════════════════════════════════════════════════════════ */
-
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
-
-        :root {
-            /* Matrix Color Palette */
-            --matrix-black: #0a0a0a;
-            --matrix-dark: #0d1a0d;
-            --matrix-green: #00ff41;
-            --matrix-teal: #0abab5;
-            --matrix-cyan: #00d4ff;
-            --matrix-lime: #39ff14;
-            --matrix-dim: #1a3a1a;
-
-            /* Accent Colors */
-            --brutal-red: #ff3333;
-            --brutal-orange: #ff6600;
-            --brutal-yellow: #ffcc00;
-            --brutal-white: #f0f0f0;
-            --brutal-gray: #666;
-
-            /* Reveal.js Overrides */
-            --r-background-color: var(--matrix-black);
-            --r-main-color: var(--brutal-white);
-            --r-heading-color: var(--matrix-green);
-            --r-link-color: var(--matrix-cyan);
-            --r-selection-background-color: var(--matrix-teal);
-        }
-
-        /* Base Typography - Brutalist */
-        .reveal {
-            font-family: 'Space Grotesk', 'Arial Black', sans-serif;
-            background: var(--matrix-black);
-        }
-
-        .reveal h1, .reveal h2, .reveal h3 {
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-shadow: 0 0 20px var(--matrix-green), 0 0 40px rgba(0, 255, 65, 0.3);
-        }
-
-        .reveal h1 {
-            font-size: 3em;
-            border-bottom: 4px solid var(--matrix-green);
-            padding-bottom: 0.2em;
-            display: inline-block;
-        }
-        .reveal h2 {
-            font-size: 2em;
-            color: var(--matrix-teal);
-        }
-        .reveal h3 {
-            font-size: 1.5em;
-            color: var(--matrix-cyan);
-        }
-
-        /* Glowing Text Effect */
-        .glow {
-            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
-        }
-
-        /* Subtitle Styling */
-        .reveal .subtitle {
-            color: var(--matrix-cyan);
-            font-size: 1.3em;
-            margin-top: 0.5em;
-            font-family: 'IBM Plex Mono', monospace;
-            border: 2px solid var(--matrix-teal);
-            padding: 0.3em 0.8em;
-            display: inline-block;
-        }
-
-        .reveal .speaker-info {
-            font-size: 0.9em;
-            color: var(--brutal-gray);
-            margin-top: 2em;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        /* Dramatic Text - Brutalist */
-        .reveal .dramatic {
-            font-size: 2em;
-            font-weight: 700;
-            color: var(--brutal-yellow);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border-left: 6px solid var(--brutal-yellow);
-            padding-left: 0.5em;
-            text-shadow: 3px 3px 0 var(--matrix-dark);
-        }
-
-        .reveal .hook-text {
-            font-size: 1.6em;
-            line-height: 1.5;
-            color: var(--brutal-white);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           STATISTICS & DATA VISUALIZATION
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .stat-big {
-            font-size: 4em;
-            font-weight: 700;
-            color: var(--matrix-green);
-            font-family: 'IBM Plex Mono', monospace;
-            text-shadow: 0 0 30px var(--matrix-green);
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { text-shadow: 0 0 20px var(--matrix-green); }
-            50% { text-shadow: 0 0 40px var(--matrix-green), 0 0 60px var(--matrix-teal); }
-        }
-
-        .reveal .stat-red {
-            color: var(--brutal-red);
-            text-shadow: 0 0 30px var(--brutal-red);
-        }
-
-        .reveal .stat-label {
-            font-size: 0.9em;
-            color: var(--brutal-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        /* Comparison Layout - Brutalist Cards */
-        .reveal .comparison {
-            display: flex;
-            justify-content: center;
-            gap: 2em;
-            margin: 1.5em 0;
-        }
-
-        .reveal .comparison-item {
-            text-align: center;
-            padding: 1.5em;
-            background: var(--matrix-dark);
-            border: 3px solid var(--matrix-dim);
-            position: relative;
-        }
-
-        .reveal .comparison-item::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, var(--matrix-green), transparent, var(--matrix-teal));
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           CODE BLOCKS - Terminal Style
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal pre {
-            width: 100%;
-            font-size: 0.75em;
-            background: #0d0d0d;
-            border: 2px solid var(--matrix-dim);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
-        }
-
-        .reveal pre::before {
-            content: '$ ';
-            color: var(--matrix-green);
-        }
-
-        .reveal pre code {
-            max-height: 500px;
-            font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
-            padding: 1.2em;
-            background: transparent;
-        }
-
-        .reveal .code-bad {
-            background: rgba(255, 51, 51, 0.1);
-            border-left: 4px solid var(--brutal-red);
-        }
-
-        .reveal .code-good {
-            background: rgba(0, 255, 65, 0.1);
-            border-left: 4px solid var(--matrix-green);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           TABLES - Data Grid Style
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal table {
-            margin: 1.5em auto;
-            border-collapse: collapse;
-            font-size: 0.85em;
-            font-family: 'IBM Plex Mono', monospace;
-            border: 2px solid var(--matrix-green);
-        }
-
-        .reveal table th,
-        .reveal table td {
-            padding: 0.8em 1.2em;
-            border: 1px solid var(--matrix-dim);
-        }
-
-        .reveal table th {
-            background: var(--matrix-dark);
-            color: var(--matrix-green);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-        }
-
-        .reveal table tr:hover {
-            background: rgba(0, 255, 65, 0.05);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           WORKFLOW & FLOWCHART COMPONENTS
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .workflow-box {
-            background: var(--matrix-dark);
-            border: 3px solid var(--matrix-green);
-            padding: 1em 1.5em;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1.1em;
-            color: var(--matrix-green);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2), inset 0 0 20px rgba(0, 255, 65, 0.05);
-        }
-
-        /* Flowchart Styles */
-        .flowchart {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            flex-wrap: wrap;
-            margin: 1.5em 0;
-        }
-
-        .flow-node {
-            background: var(--matrix-dark);
-            border: 2px solid var(--matrix-teal);
-            padding: 0.8em 1.2em;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.9em;
-            color: var(--matrix-cyan);
-            position: relative;
-        }
-
-        .flow-node.active {
-            border-color: var(--matrix-green);
-            color: var(--matrix-green);
-            box-shadow: 0 0 15px var(--matrix-green);
-        }
-
-        .flow-node.danger {
-            border-color: var(--brutal-red);
-            color: var(--brutal-red);
-        }
-
-        .flow-node.warning {
-            border-color: var(--brutal-yellow);
-            color: var(--brutal-yellow);
-        }
-
-        .flow-arrow {
-            color: var(--matrix-teal);
-            font-size: 1.5em;
-            padding: 0 0.3em;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        /* Infographic Boxes */
-        .info-box {
-            background: linear-gradient(135deg, var(--matrix-dark) 0%, var(--matrix-black) 100%);
-            border: 2px solid;
-            padding: 1.5em;
-            margin: 0.5em;
-            text-align: center;
-        }
-
-        .info-box.green { border-color: var(--matrix-green); }
-        .info-box.red { border-color: var(--brutal-red); }
-        .info-box.yellow { border-color: var(--brutal-yellow); }
-        .info-box.teal { border-color: var(--matrix-teal); }
-
-        .info-box .icon {
-            font-size: 2em;
-            margin-bottom: 0.3em;
-        }
-
-        .info-box .label {
-            font-size: 0.8em;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--brutal-gray);
-        }
-
-        .info-box .value {
-            font-size: 1.8em;
-            font-weight: 700;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        /* Grid Layout for Infographics */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1em;
-            margin: 1em 0;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           VIDEO/DEMO PLACEHOLDERS
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .video-placeholder {
-            background: var(--matrix-dark);
-            border: 3px dashed var(--matrix-dim);
-            padding: 3em;
-            text-align: center;
-            color: var(--brutal-gray);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reveal .video-placeholder::before {
-            content: "▶ DEMO";
-            display: block;
-            font-size: 1.3em;
-            color: var(--matrix-teal);
-            margin-bottom: 0.5em;
-            font-family: 'IBM Plex Mono', monospace;
-            letter-spacing: 0.2em;
-        }
-
-        .reveal .video-placeholder::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
-            animation: scan-line 3s infinite;
-        }
-
-        @keyframes scan-line {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           QUOTES & CALLOUTS
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .quote {
-            font-size: 1.5em;
-            font-weight: 500;
-            border-left: 6px solid var(--matrix-green);
-            padding: 0.5em 1em;
-            margin: 1em 0;
-            background: rgba(0, 255, 65, 0.05);
-            color: var(--brutal-white);
-        }
-
-        .reveal .quote.danger {
-            border-color: var(--brutal-red);
-            background: rgba(255, 51, 51, 0.05);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           TIMELINE - Horizontal Flow
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .timeline {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0;
-            flex-wrap: wrap;
-            margin: 1em 0;
-        }
-
-        .reveal .timeline-item {
-            padding: 0.6em 1.2em;
-            font-size: 0.95em;
-            font-family: 'IBM Plex Mono', monospace;
-            font-weight: 500;
-            border: 2px solid;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .reveal .timeline-arrow {
-            color: var(--matrix-teal);
-            font-size: 1.3em;
-            padding: 0 0.2em;
-        }
-
-        .reveal .t-green {
-            border-color: var(--matrix-green);
-            color: var(--matrix-green);
-            background: rgba(0, 255, 65, 0.1);
-        }
-        .reveal .t-yellow {
-            border-color: var(--brutal-yellow);
-            color: var(--brutal-yellow);
-            background: rgba(255, 204, 0, 0.1);
-        }
-        .reveal .t-red {
-            border-color: var(--brutal-red);
-            color: var(--brutal-red);
-            background: rgba(255, 51, 51, 0.1);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           CHECKLIST - Terminal Style
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .checklist {
-            text-align: left;
-            font-size: 1.1em;
-            list-style: none;
-            padding-left: 0;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .reveal .checklist li {
-            padding: 0.5em 0;
-            border-bottom: 1px solid var(--matrix-dim);
-        }
-
-        .reveal .checklist li::before {
-            content: "[_]";
-            color: var(--matrix-green);
-            margin-right: 0.8em;
-            font-weight: 600;
-        }
-
-        .reveal .checklist li.checked::before {
-            content: "[✓]";
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           INTERACTIVE SECTIONS
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .interactive {
-            background: linear-gradient(135deg, var(--matrix-dark) 0%, rgba(10, 186, 181, 0.1) 100%);
-            border: 3px solid var(--matrix-teal);
-            padding: 2em;
-            position: relative;
-        }
-
-        .reveal .interactive::before {
-            content: 'INTERACTIVE';
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background: var(--matrix-black);
-            padding: 0 10px;
-            color: var(--matrix-teal);
-            font-size: 0.7em;
-            letter-spacing: 0.2em;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .reveal .poll-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1em;
-            margin-top: 1.5em;
-        }
-
-        .reveal .poll-option {
-            background: var(--matrix-dark);
-            border: 2px solid var(--matrix-dim);
-            padding: 1em;
-            font-family: 'IBM Plex Mono', monospace;
-            color: var(--matrix-cyan);
-            transition: all 0.2s;
-        }
-
-        .reveal .poll-option:hover {
-            border-color: var(--matrix-green);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           QR CODE & RESOURCES
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .qr-placeholder {
-            width: 200px;
-            height: 200px;
-            background: var(--brutal-white);
-            margin: 1em auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--matrix-black);
-            font-size: 0.8em;
-            border: 4px solid var(--matrix-green);
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           SECTION TITLES
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .section-title {
-            color: var(--matrix-teal);
-            font-size: 0.7em;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            margin-bottom: 1em;
-            font-family: 'IBM Plex Mono', monospace;
-            border: 1px solid var(--matrix-teal);
-            padding: 0.3em 1em;
-            display: inline-block;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           FRAGMENT HIGHLIGHTS
-           ═══════════════════════════════════════════════════════════════ */
-
-        .reveal .fragment.highlight-red.visible {
-            color: var(--brutal-red);
-            text-shadow: 0 0 10px var(--brutal-red);
-        }
-
-        .reveal .fragment.highlight-green.visible {
-            color: var(--matrix-green);
-            text-shadow: 0 0 10px var(--matrix-green);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           LIES DIAGRAM - Visual Impact
-           ═══════════════════════════════════════════════════════════════ */
-
-        .lies-container {
-            display: flex;
-            justify-content: center;
-            gap: 1.5em;
-            margin: 2em 0;
-        }
-
-        .lie-card {
-            background: var(--matrix-dark);
-            border: 3px solid var(--brutal-red);
-            padding: 1.5em;
-            width: 250px;
-            text-align: center;
-            position: relative;
-        }
-
-        .lie-card::before {
-            content: attr(data-number);
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--brutal-red);
-            color: var(--matrix-black);
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .lie-card .lie-title {
-            color: var(--brutal-red);
-            font-weight: 700;
-            margin-bottom: 0.5em;
-            font-size: 1.1em;
-        }
-
-        .lie-card .lie-desc {
-            color: var(--brutal-gray);
-            font-size: 0.9em;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           MATRIX RAIN EFFECT (Background)
-           ═══════════════════════════════════════════════════════════════ */
-
-        .matrix-bg {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .matrix-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(0, 255, 65, 0.03) 2px,
-                    rgba(0, 255, 65, 0.03) 4px
-                );
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           CITATION LINKS
-           ═══════════════════════════════════════════════════════════════ */
-
-        .citation {
-            font-size: 0.7em;
-            color: var(--brutal-gray);
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .citation a {
-            color: var(--matrix-cyan);
-            text-decoration: none;
-            border-bottom: 1px dashed var(--matrix-cyan);
-        }
-
-        .citation a:hover {
-            color: var(--matrix-green);
-            border-color: var(--matrix-green);
-        }
-
-        /* Progress Bar Styling */
-        .reveal .progress {
-            background: var(--matrix-dim);
-            height: 4px;
-        }
-
-        .reveal .progress span {
-            background: var(--matrix-green);
-            box-shadow: 0 0 10px var(--matrix-green);
-        }
-
-        /* Slide Number - positioned to avoid nav arrows */
-        .reveal .slide-number {
-            font-family: 'IBM Plex Mono', monospace;
-            color: var(--matrix-teal);
-            background: var(--matrix-black);
-            font-size: 0.7em;
-            right: auto !important;
-            left: 20px !important;
-            bottom: 20px !important;
-            padding: 0.3em 0.6em;
-            border: 1px solid var(--matrix-dim);
-        }
-
-        /* Global slide padding fixes */
-        .reveal .slides section {
-            padding: 20px 40px !important;
-            box-sizing: border-box;
-        }
-
-        /* Prevent text wrapping for single-line elements */
-        .reveal .no-wrap {
-            white-space: nowrap !important;
-        }
-
-        /* Force horizontal layout for flowcharts - NO SCROLLBARS */
-        .flowchart {
-            flex-wrap: nowrap !important;
-            overflow: visible !important;
-            justify-content: center;
-            gap: 0.2em;
-            max-width: 100%;
-        }
-        .flowchart .flow-node {
-            flex-shrink: 1;
-            min-width: auto;
-            padding: 0.3em 0.4em;
-            font-size: 0.55em;
-            white-space: nowrap;
-        }
-        .flowchart .flow-node > div {
-            font-size: 0.9em !important;
-        }
-        .flowchart .flow-arrow {
-            flex-shrink: 0;
-            font-size: 0.8em;
-            padding: 0 0.05em;
-        }
-
-        /* Info box fixes - NO TEXT WRAPPING */
-        .info-box {
-            padding: 0.6em;
-            min-width: 0;
-            overflow: hidden;
-        }
-        .info-box .value {
-            font-size: 0.75em;
-            white-space: nowrap;
-            overflow: visible;
-        }
-        .info-box .label {
-            font-size: 0.45em;
-            white-space: nowrap;
-            line-height: 1.2;
-        }
-        .info-box .icon {
-            font-size: 1.2em;
-        }
-
-        /* Force cards in single row - compact */
-        .info-grid {
-            display: flex !important;
-            flex-wrap: nowrap !important;
-            justify-content: center;
-            gap: 0.5em;
-        }
-        .info-grid .info-box {
-            flex: 1;
-            max-width: 180px;
-            min-width: 100px;
-        }
-
-        /* Lies container fix */
-        .lies-container {
-            flex-wrap: nowrap !important;
-            gap: 0.6em;
-            overflow: visible !important;
-        }
-        .lie-card {
-            width: auto;
-            min-width: 140px;
-            max-width: 180px;
-            padding: 0.7em;
-            font-size: 0.9em;
-        }
-
-        /* Comparison layout fix */
-        .reveal .comparison {
-            flex-wrap: nowrap !important;
-            gap: 1em;
-            overflow: visible !important;
-        }
-        .reveal .comparison-item {
-            flex: 1;
-            max-width: 280px;
-            padding: 0.8em;
-        }
-
-        /* Table fix for smaller screens */
-        .reveal table {
-            font-size: 0.75em;
-            margin: 1em auto;
-        }
-        .reveal table th,
-        .reveal table td {
-            padding: 0.5em 0.8em;
-        }
-
-        /* Quote size fix */
-        .reveal .quote {
-            font-size: 1.2em;
-            padding: 0.4em 0.8em;
-        }
-        .reveal .quote.danger {
-            font-size: 1.4em;
-        }
-
-        /* Stat big size reduction */
-        .reveal .stat-big {
-            font-size: 3.5em;
-        }
-
-        /* Workflow box fix */
-        .reveal .workflow-box {
-            padding: 0.6em 1em;
-            font-size: 0.95em;
-        }
-
-        /* Video placeholder smaller */
-        .reveal .video-placeholder {
-            padding: 1.5em;
-            font-size: 0.9em;
-        }
-
-        /* Poll options fix */
-        .reveal .poll-options {
-            gap: 0.8em;
-        }
-        .reveal .poll-option {
-            padding: 0.8em;
-            font-size: 0.9em;
-        }
-
-        /* Checklist fix */
-        .reveal .checklist {
-            font-size: 0.95em;
-        }
-        .reveal .checklist li {
-            padding: 0.4em 0;
-        }
-
-        /* Timeline fix */
-        .reveal .timeline {
-            flex-wrap: nowrap !important;
-            overflow: visible !important;
-            gap: 0.3em;
-        }
-        .reveal .timeline-item {
-            padding: 0.3em 0.5em;
-            font-size: 0.7em;
-            white-space: nowrap;
-        }
-
-        /* Interactive section fix */
-        .reveal .interactive {
-            padding: 1.5em;
-        }
-
-        /* QR placeholder fix */
-        .reveal .qr-placeholder {
-            width: 160px;
-            height: 160px;
-            font-size: 0.7em;
-        }
-        .reveal .qr-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* Profile image styling */
-        .reveal .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--matrix-green);
-            box-shadow: 0 0 20px var(--matrix-green);
-            object-fit: cover;
-        }
-
-        /* Dramatic text fix */
-        .reveal .dramatic {
-            font-size: 1.4em;
-            line-height: 1.3;
-        }
-
-        /* Section title smaller */
-        .reveal .section-title {
-            font-size: 0.6em;
-            padding: 0.2em 0.8em;
-            margin-bottom: 0.8em;
-        }
-
-        /* Speaker info fix */
-        .reveal .speaker-info {
-            font-size: 0.8em;
-            margin-top: 1.5em;
-        }
-
-        /* Subtitle fix */
-        .reveal .subtitle {
-            font-size: 1.1em;
-            padding: 0.2em 0.6em;
-        }
-
-        /* Code block fix */
-        .reveal pre {
-            font-size: 0.65em;
-            margin: 0.8em 0;
-        }
-        .reveal pre code {
-            padding: 0.8em;
-            max-height: 350px;
-        }
-
-        /* H2/H3 size adjustment */
-        .reveal h2 {
-            font-size: 1.6em;
-            margin-bottom: 0.5em;
-        }
-        .reveal h3 {
-            font-size: 1.3em;
-            margin-bottom: 0.5em;
-        }
-
-        /* Closing slide layout */
-        .closing-layout {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2em;
-        }
-        .closing-info {
-            text-align: left;
-        }
-    </style>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="reveal">
@@ -946,12 +38,11 @@
                     <img src="images/profile.jpg" alt="Duy Nguyen" class="profile-img">
                     <div style="text-align: left;">
                         <h1 style="font-size: 2em; margin: 0; border: none; padding: 0;">From Vibe Coding<br>to Production</h1>
-                        <p class="subtitle" style="margin-top: 0.5em;">// THE CTO'S CONFESSIONAL</p>
+                        <p class="subtitle no-wrap" style="margin-top: 0.5em; font-size: 0.85em;">// THE CTO'S CONFESSIONAL</p>
                     </div>
                 </div>
-                <p class="speaker-info">
-                    <span style="color: var(--matrix-green);">$</span> whoami |
-                    <span style="color: var(--matrix-cyan);">Duy Nguyen</span> | CTO @ Build in Public Vietnam
+                <p class="speaker-info no-wrap" style="font-size: 0.65em;">
+                    <span style="color: var(--matrix-green);">$</span> whoami | <span style="color: var(--matrix-cyan);">Duy Nguyen</span> | CTO @ Build in Public Vietnam
                 </p>
                 <aside class="notes">
                     [3 min] Welcome everyone. I'm Duy, CTO of Build in Public Vietnam.
@@ -962,12 +53,12 @@
 
             <!-- Slide 2: The Hook -->
             <section data-background-gradient="radial-gradient(circle, #0d1a0d 0%, #0a0a0a 100%)">
-                <p class="dramatic" style="font-size: 1.8em;">
+                <p class="dramatic" style="font-size: 1.5em;">
                     "LET ME TELL YOU ABOUT THE TIME<br>
                     I HAD TO KILL MY OWN PRODUCT..."
                 </p>
                 <div style="margin-top: 2em;">
-                    <span style="font-family: 'IBM Plex Mono', monospace; color: var(--brutal-red); font-size: 0.9em;">
+                    <span style="font-family: 'IBM Plex Mono', monospace; color: var(--brutal-red); font-size: 0.7em;">
                         [FATAL ERROR] product.exe has stopped responding
                     </span>
                 </div>
@@ -1039,17 +130,20 @@
             <!-- Slide 6: The Demo That Worked -->
             <section>
                 <h2>INDIEBOOSTING</h2>
-                <div class="flowchart" style="margin: 1em 0;">
+                <div class="flowchart" style="margin: 0;">
                     <div class="flow-node active">BUILT</div>
                     <span class="flow-arrow">→</span>
                     <div class="flow-node active">LAUNCHED</div>
                     <span class="flow-arrow">→</span>
                     <div class="flow-node active">USERS CAME</div>
                 </div>
-                <div class="video-placeholder" style="margin-top: 1.5em;">
-                    IndieBoosting screenshot/demo
+                <p class="citation" style="margin: 0; margin-top: 1.2em; margin-bottom: 0.5em; font-size: 0.4em;">
+                    The idea is simple: help solo-builders to boost products of each other.
+                </p>
+                <div style="">
+                    <img src="images/indieboosting.png" alt="IndieBoosting Screenshot" style="max-width: 100%; max-height: 350px; border: 2px solid var(--matrix-green); box-shadow: 0 0 20px rgba(0, 255, 65, 0.3); margin: 0.2em;">
                 </div>
-                <p class="citation" style="margin-top: 1em;">
+                <p class="citation" style="margin: 0;">
                     Built with AI in days, not months
                 </p>
             </section>
@@ -1070,10 +164,10 @@
             <!-- Slide 8: Interactive -->
             <section class="interactive">
                 <h2 style="color: var(--matrix-cyan);">QUICK POLL</h2>
-                <p style="font-size: 1.3em; margin-top: 1em; color: var(--brutal-white);">
+                <p class="no-wrap" style="font-size: 0.9em; margin-top: 1em; color: var(--brutal-white);">
                     <span style="color: var(--matrix-green);">$</span> raise --hand "wizard mode in last 6 months"
                 </p>
-                <div style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace; color: var(--brutal-gray);">
+                <div style="font-size: 1em; margin-top: 1em; font-family: 'IBM Plex Mono', monospace; color: var(--brutal-gray);">
                     [Counting responses...]
                 </div>
                 <aside class="notes">
@@ -1089,7 +183,7 @@
             <!-- Lie #1: Slides 9-12 -->
             <section class="matrix-bg">
                 <p class="section-title">// THE THREE LIES</p>
-                <h2 style="color: var(--brutal-red);">LIE #1: "I IMPLEMENTED IT"</h2>
+                <h2 style="color: var(--brutal-red); font-size: 2em;">LIE #1:<br />"I IMPLEMENTED IT"</h2>
                 <div class="no-wrap" style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace; font-size: 0.85em;">
                     <span style="color: var(--brutal-red);">ERROR:</span>
                     <span style="color: var(--brutal-gray);">confidence.level !== reality.level</span>
@@ -1110,13 +204,14 @@
                     <div class="flow-node danger fragment">CLIENT CALL</div>
                 </div>
                 <p class="fragment" style="color: var(--brutal-red); font-size: 1.3em; margin-top: 1em; font-family: 'IBM Plex Mono', monospace;">
-                    "Why are there fake statistics?"
+                    "Why are there fake statistics?"<br/>👀
                 </p>
             </section>
 
             <section>
                 <h3>THE CODE</h3>
-                <pre class="code-bad"><code class="javascript" data-trim data-line-numbers>
+                <pre class="code-bad">
+                    <code class="javascript" style="border: none; outline: none;" data-trim data-line-numbers>
 // What I thought Claude did:
 const stats = await fetchRealStats();
 
@@ -1125,7 +220,8 @@ const stats = {
   users: 10432,  // ← HALLUCINATED
   revenue: "$50K" // ← MADE UP
 };
-                </code></pre>
+                    </code>
+                </pre>
                 <p class="citation" style="margin-top: 1em;">
                     Real incident, 2025 | <a href="https://arxiv.org/abs/2303.12712" target="_blank">AI Hallucination Research</a>
                 </p>
@@ -1139,61 +235,54 @@ const stats = {
                 <div class="fragment workflow-box" style="margin-top: 1.5em;">
                     $ npm test && npm run verify
                 </div>
+                <p class="citation" style="margin-top: 1em;">
+                    This incident woke me up. I started to find a way to improve Claude.
+                </p>
             </section>
 
             <!-- Lie #2: Slides 13-15 -->
             <section class="matrix-bg">
                 <p class="section-title">// THE THREE LIES</p>
-                <h2 style="color: var(--brutal-red);">LIE #2: "CONTEXT IS FINE"</h2>
-                <div style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace;">
-                    <span style="color: var(--brutal-yellow);">WARNING:</span>
-                    <span style="color: var(--brutal-gray);">context.length > context.quality</span>
+                <h2 style="color: var(--brutal-red);">LIE #02: LARGE CONTEXT WINDOW IS GOOD</h2>
+                <div style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace; font-size: 1.1em;">
+                    <span style="color: var(--brutal-yellow);">Question:</span>
+                    <span style="color: var(--brutal-white);">Gemini 3 (1M tokens) vs Opus 4.5 (200K tokens)</span>
                 </div>
+                <p class="fragment" style="margin-top: 1em; font-size: 1.3em; color: var(--matrix-cyan);">Which is better?</p>
             </section>
 
             <section>
                 <h3>CONTEXT ROT IS REAL</h3>
+                <div class="fragment" style="margin: 1em 0;">
+                    <p style="font-size: 1.3em; color: var(--matrix-green); font-family: 'IBM Plex Mono', monospace;">Answer: Opus 4.5</p>
+                </div>
+                <div class="fragment" style="margin: 1em 0;">
+                    <p style="font-size: 1.1em; color: var(--brutal-yellow);">Why?</p>
+                    <p style="font-size: 1em; color: var(--brutal-white); margin-top: 0.5em;">After 100-150K tokens, models get hallucinated.</p>
+                </div>
                 <!-- Visual: Context Degradation Meter -->
-                <div style="max-width: 600px; margin: 1.5em auto;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5em;">
+                <div style="max-width: 600px; margin: 1em auto;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3em; font-size: 0.9em;">
                         <span style="color: var(--matrix-green);">0K tokens</span>
+                        <span style="color: var(--brutal-yellow);">100K</span>
                         <span style="color: var(--brutal-red);">200K tokens</span>
                     </div>
-                    <div style="height: 30px; background: linear-gradient(90deg, var(--matrix-green), var(--brutal-yellow), var(--brutal-red)); border: 2px solid var(--matrix-dim);"></div>
-                    <div style="display: flex; justify-content: space-between; margin-top: 0.5em; font-size: 0.8em; color: var(--brutal-gray);">
-                        <span>HIGH QUALITY</span>
-                        <span>DEGRADED</span>
-                    </div>
+                    <div style="height: 25px; background: linear-gradient(90deg, var(--matrix-green), var(--brutal-yellow) 50%, var(--brutal-red)); border: 2px solid var(--matrix-dim);"></div>
                 </div>
-                <p class="citation">
-                    <a href="https://www.trychroma.com/blog/context-length" target="_blank">Chroma Research, 2024</a> |
+                <p class="citation fragment" style="font-size: 0.65em;">
+                    According to these researches: <a href="https://www.trychroma.com/blog/context-length" target="_blank">Chroma Research, 2024</a> |
                     <a href="https://arxiv.org/abs/2307.03172" target="_blank">Lost in the Middle: How LLMs Use Long Contexts</a>
                 </p>
             </section>
 
             <section>
-                <h3>THE SYMPTOMS</h3>
-                <div class="info-grid" style="max-width: 700px; margin: 0.8em auto;">
-                    <div class="info-box red fragment">
-                        <div class="icon">🤖</div>
-                        <div class="value" style="color: var(--brutal-red);">GPT</div>
-                        <div class="label">Hallucinates</div>
-                    </div>
-                    <div class="info-box yellow fragment">
-                        <div class="icon">🚫</div>
-                        <div class="value" style="color: var(--brutal-yellow);">Claude</div>
-                        <div class="label">Refuses</div>
-                    </div>
-                    <div class="info-box red fragment">
-                        <div class="icon">📉</div>
-                        <div class="value" style="color: var(--brutal-red);">Quality</div>
-                        <div class="label">Degrades</div>
-                    </div>
+                <h3>HOW TO FIX?</h3>
+                <div class="quote" style="font-size: 1.5em; margin: 1.5em 0;">
+                    Context Engineering is the key
                 </div>
-                <div class="fragment" style="margin-top: 1em;">
-                    <p style="color: var(--matrix-green); font-family: 'IBM Plex Mono', monospace; font-size: 0.9em;">THE FIX:</p>
+                <div class="fragment" style="margin-top: 1.5em;">
                     <div class="workflow-box" style="margin-top: 0.3em;">/clear</div>
-                    <p style="font-size: 0.8em; margin-top: 0.3em; color: var(--brutal-gray);">Fresh context = Better output</p>
+                    <p style="font-size: 0.9em; margin-top: 0.5em; color: var(--brutal-gray);">Fresh context = Better output</p>
                 </div>
             </section>
 
@@ -1201,9 +290,8 @@ const stats = {
             <section class="matrix-bg">
                 <p class="section-title">// THE THREE LIES</p>
                 <h2 style="color: var(--brutal-red);">LIE #3: "I UNDERSTAND YOUR CODEBASE"</h2>
-                <div style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace;">
-                    <span style="color: var(--brutal-red);">FATAL:</span>
-                    <span style="color: var(--brutal-gray);">assumption !== understanding</span>
+                <div class="no-wrap" style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace;">
+                    <span style="color: var(--brutal-red);">FATAL:</span> <span style="color: var(--brutal-gray);">assumption !== understanding</span>
                 </div>
             </section>
 
@@ -1213,12 +301,12 @@ const stats = {
                 <div style="display: flex; justify-content: center; gap: 1.5em; margin: 1em 0;">
                     <div class="info-box green fragment" style="width: 150px; padding: 0.8em;">
                         <div style="font-size: 0.7em; color: var(--brutal-gray);">AI CONFIDENCE</div>
-                        <div style="font-size: 2.2em; color: var(--matrix-green);">99%</div>
+                        <div style="font-size: 2em; color: var(--matrix-green);">99%</div>
                     </div>
                     <div style="display: flex; align-items: center; font-size: 1.8em; color: var(--brutal-red);">≠</div>
                     <div class="info-box red fragment" style="width: 150px; padding: 0.8em;">
                         <div style="font-size: 0.7em; color: var(--brutal-gray);">ACTUAL</div>
-                        <div style="font-size: 2.2em; color: var(--brutal-red);">60%</div>
+                        <div style="font-size: 2em; color: var(--brutal-red);">60%</div>
                     </div>
                 </div>
                 <div class="flowchart fragment" style="margin-top: 1em;">
@@ -1227,6 +315,37 @@ const stats = {
                     <div class="flow-node active">WRITES</div>
                     <span class="flow-arrow">→</span>
                     <div class="flow-node danger">SHIPS WRONG</div>
+                </div>
+            </section>
+
+            <!-- BONUS: Don't Curse AI Slide -->
+            <section class="matrix-bg">
+                <p class="section-title">// BONUS</p>
+                <h3 style="color: var(--brutal-yellow); margin-bottom: 0.2em; font-size: 1.1em;">QUICK QUESTION</h3>
+                <p class="fragment" style="font-size: 0.95em; color: var(--brutal-white); margin: 0.4em 0;">
+                    Who here has worked with AI and cursed at it?
+                </p>
+                <p class="fragment" style="font-size: 0.9em; color: var(--matrix-cyan); margin: 0.3em 0;">
+                    Me too.
+                </p>
+                <p class="fragment" style="font-size: 1em; color: var(--brutal-red); margin: 0.4em 0; font-weight: bold;">
+                    But you should NOT do that.
+                </p>
+                <div class="fragment" style="margin-top: 0.6em;">
+                    <p style="font-size: 0.75em; color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace; margin-bottom: 0.4em;">
+                        LLM is a statistical probability algorithm.
+                    </p>
+                    <div class="flowchart" style="margin: 0.4em 0;">
+                        <div class="flow-node danger">WRONG</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-node warning">CURSED</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-node danger">WRONG</div>
+                        <span class="flow-arrow" style="color: var(--brutal-red);">↻</span>
+                    </div>
+                    <p style="font-size: 0.7em; color: var(--matrix-green); margin-top: 0.4em;">
+                        Negative feedback → reinforces wrong behavior
+                    </p>
                 </div>
             </section>
 
@@ -1260,40 +379,44 @@ const stats = {
                     "HOW DO I ENSURE THIS DOESN'T BREAK<br>
                     WHEN 1,000 USERS SHOW UP?"
                 </h2>
-                <div style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace; color: var(--brutal-gray);">
+                <div class="no-wrap" style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace; color: var(--brutal-gray);">
                     [The question every CTO should ask]
                 </div>
+                <p class="fragment" style="margin-top: 0.5em; color: var(--matrix-cyan); font-size: 0.9em;">(And many overthinkers also ask 😁)</p>
             </section>
 
             <section>
                 <h2>INDIEBOOSTING: THE FULL STORY</h2>
                 <!-- Enhanced Timeline Flowchart -->
                 <div class="flowchart" style="margin: 1.5em 0;">
-                    <div class="flow-node active">
+                    <div class="flow-node active fragment">
                         <div style="font-size: 0.6em; color: var(--brutal-gray);">DAY 1</div>
                         BUILT
                     </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-node active">
-                        <div style="font-size: 0.6em; color: var(--brutal-gray);">DAY 3</div>
+                    <span class="flow-arrow fragment">→</span>
+                    <div class="flow-node active fragment">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">DAY 14</div>
                         LAUNCHED
                     </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-node warning">
-                        <div style="font-size: 0.6em; color: var(--brutal-gray);">DAY 5</div>
+                    <span class="flow-arrow fragment">→</span>
+                    <div class="flow-node warning fragment">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">MONTH 3</div>
                         VIRAL
                     </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-node danger">
-                        <div style="font-size: 0.6em; color: var(--brutal-gray);">DAY 6</div>
+                    <span class="flow-arrow fragment">→</span>
+                    <div class="flow-node danger fragment">
+                        <div style="font-size: 0.6em; color: var(--brutal-gray);">MONTH 5</div>
                         BROKE
                     </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-node danger">
+                    <span class="flow-arrow fragment">→</span>
+                    <div class="flow-node danger fragment">
                         <div style="font-size: 0.6em; color: var(--brutal-gray);">MONTH 6</div>
                         DIED
                     </div>
                 </div>
+                <p class="fragment" style="margin-top: 1em; font-size: 0.9em; color: var(--matrix-cyan); font-family: 'IBM Plex Mono', monospace;">
+                    I built this product in 2 weeks with Windsurf, 100% vibe coding.
+                </p>
                 <aside class="notes">
                     [10 min section] This is the full IndieBoosting story.
                     Built in days with AI. Went viral on Product Hunt.
@@ -1302,33 +425,28 @@ const stats = {
             </section>
 
             <section>
-                <h3>WHAT BROKE: DATABASE</h3>
-                <div class="info-grid" style="max-width: 600px; margin: 1em auto;">
-                    <div class="info-box red">
-                        <div class="icon">🔄</div>
-                        <div class="value" style="color: var(--brutal-red);">N+1</div>
-                        <div class="label">Query Problem</div>
+                <h3 style="margin-bottom: 0.2em; font-size: 1.2em;">WHAT BROKE: DATABASE</h3>
+                <div class="info-grid" style="max-width: 450px; margin: 0.2em auto;">
+                    <div class="info-box red" style="padding: 0.2em;">
+                        <div class="icon" style="font-size: 0.7em;">🔄</div>
+                        <div class="value" style="color: var(--brutal-red); font-size: 0.55em;">N+1</div>
                     </div>
-                    <div class="info-box red">
-                        <div class="icon">🐌</div>
-                        <div class="value" style="color: var(--brutal-red);">0</div>
-                        <div class="label">Indexes</div>
+                    <div class="info-box red" style="padding: 0.2em;">
+                        <div class="icon" style="font-size: 0.7em;">🐌</div>
+                        <div class="value" style="color: var(--brutal-red); font-size: 0.55em;">No Index</div>
+                    </div>
+                    <div class="info-box red" style="padding: 0.2em;">
+                        <div class="icon" style="font-size: 0.7em;">🥲</div>
+                        <div class="value" style="color: var(--brutal-red); font-size: 0.55em;">Raw SQL</div>
                     </div>
                 </div>
-                <pre class="code-bad fragment"><code class="javascript" data-trim>
-// What AI wrote - N+1 PROBLEM
-users.forEach(async (user) => {
-  const orders = await db.query(
-    `SELECT * FROM orders WHERE user_id = ${user.id}`
-  );
-});
+                <pre class="code-bad fragment" style="font-size: 0.42em; margin: 0.2em 0;"><code class="javascript" data-trim>
+// N+1 + SQL INJECTION
+users.forEach(async (u) => { await db.query(`SELECT * FROM orders WHERE user_id = ${u.id}`); });
                 </code></pre>
-                <pre class="code-good fragment"><code class="javascript" data-trim>
-// What it should have been - BATCH QUERY
-const orders = await db.query(
-  `SELECT * FROM orders WHERE user_id IN (??)`,
-  [userIds]
-);
+                <pre class="code-good fragment" style="font-size: 0.42em; margin: 0.2em 0;"><code class="javascript" data-trim>
+// BATCH + PARAMETERIZED
+const orders = await db.query(`SELECT * FROM orders WHERE user_id IN (??)`, [userIds]);
                 </code></pre>
             </section>
 
@@ -1354,7 +472,7 @@ const orders = await db.query(
                         <div class="label">Server</div>
                     </div>
                 </div>
-                <p style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace;">No caching • No rate limiting • No CDN</p>
+                <p class="no-wrap" style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace; font-size: 0.9em;">No caching • No rate limiting • No CDN</p>
             </section>
 
             <section>
@@ -1371,16 +489,19 @@ const orders = await db.query(
                 </div>
                 <div class="fragment" style="margin-top: 1.5em; font-family: 'IBM Plex Mono', monospace;">
                     <span style="color: var(--brutal-red);">[OUT OF MEMORY]</span>
-                    <span style="color: var(--brutal-gray);">Server crashed after 4 hours</span>
+                    <span style="color: var(--brutal-gray);">Server crashed every 4 hours</span>
                 </div>
             </section>
 
             <section data-background-gradient="radial-gradient(circle, #1a0d0d 0%, #0a0a0a 100%)">
-                <h3>THE ENGINEER'S VERDICT</h3>
-                <div class="quote danger" style="font-size: 2em;">
+                <h3 style="margin-bottom: 0.3em;">THE ENGINEER'S VERDICT</h3>
+                <div class="quote danger fragment" style="font-size: 1.8em; margin: 0.5em 0;">
                     "6 MONTHS TO REWRITE"
                 </div>
-                <p class="fragment" style="margin-top: 1.5em; font-size: 1.5em; color: var(--brutal-yellow); text-transform: uppercase;">
+                <p class="fragment" style="margin-top: 0.5em; font-size: 1em; color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace;">
+                    "The whole code base is a mess"
+                </p>
+                <p class="fragment" style="margin-top: 0.5em; font-size: 1.3em; color: var(--brutal-yellow); text-transform: uppercase;">
                     I had to kill it.
                 </p>
             </section>
@@ -1419,17 +540,20 @@ const orders = await db.query(
             </section>
 
             <section>
-                <h3>THE MINDSET SHIFT</h3>
-                <div style="display: flex; justify-content: center; gap: 2em; margin: 1.5em 0;">
-                    <div class="info-box yellow" style="width: 300px;">
-                        <div style="font-size: 0.8em; color: var(--brutal-gray); margin-bottom: 0.5em;">VIBE CODER</div>
-                        <div class="quote" style="font-size: 1.2em; border-color: var(--brutal-yellow);">"Does it work?"</div>
+                <h3 style="margin-bottom: 0.3em;">THE MINDSET SHIFT</h3>
+                <div style="display: flex; justify-content: center; gap: 1.5em; margin: 1em 0;">
+                    <div class="info-box yellow" style="width: 280px; padding: 0.8em;">
+                        <div style="font-size: 0.7em; color: var(--brutal-gray); margin-bottom: 0.3em;">VIBE CODER</div>
+                        <div class="quote" style="font-size: 1.1em; border-color: var(--brutal-yellow);">"Does it work?"</div>
                     </div>
-                    <div class="info-box green" style="width: 300px;">
-                        <div style="font-size: 0.8em; color: var(--brutal-gray); margin-bottom: 0.5em;">CTO</div>
-                        <div class="quote" style="font-size: 1.2em;">"Will it work at 100x?"</div>
+                    <div class="info-box green" style="width: 280px; padding: 0.8em;">
+                        <div style="font-size: 0.7em; color: var(--brutal-gray); margin-bottom: 0.3em;">CTO</div>
+                        <div class="quote" style="font-size: 1.1em;">"Will it work at 100x?"</div>
                     </div>
                 </div>
+                <p class="fragment" style="margin-top: 0.5em; color: var(--matrix-cyan); font-size: 0.75em; font-family: 'IBM Plex Mono', monospace;">
+                    Again: only when your product is validated.
+                </p>
             </section>
 
             <!-- ============================================ -->
@@ -1442,6 +566,9 @@ const orders = await db.query(
                 <p class="fragment" style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace;">
                     // What I wish I had
                 </p>
+                <p class="fragment" style="margin-top: 1em; color: var(--matrix-cyan); font-size: 0.85em; font-family: 'IBM Plex Mono', monospace;">
+                    I've documented everything in my blog: <a href="https://goon.vn" target="_blank" style="color: var(--matrix-green);">goon.vn</a>
+                </p>
                 <aside class="notes">
                     [15 min section] This is the main value section.
                     ClaudeKit is my answer to all these problems.
@@ -1451,8 +578,9 @@ const orders = await db.query(
 
             <section>
                 <h3>THE WORKFLOW</h3>
+                <p style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace; font-size: 0.8em; margin-bottom: 0.5em;">Nothing fancy: SDD + TDD</p>
                 <!-- Main Workflow Flowchart -->
-                <div class="flowchart" style="margin: 1.5em 0;">
+                <div class="flowchart" style="margin: 1em 0;">
                     <div class="flow-node active">/docs:init</div>
                     <span class="flow-arrow">→</span>
                     <div class="flow-node">/brainstorm</div>
@@ -1475,25 +603,25 @@ const orders = await db.query(
             <section>
                 <h3 style="color: var(--matrix-green);">/docs:init</h3>
                 <p style="color: var(--brutal-gray); font-size: 0.9em;">Scan & analyze your codebase</p>
-                <div class="info-grid" style="max-width: 650px; margin: 1em auto;">
-                    <div class="info-box teal fragment" style="padding: 0.8em;">
-                        <div class="icon">📁</div>
-                        <div class="value" style="color: var(--matrix-teal); font-size: 0.9em;">STRUCTURE</div>
-                        <div class="label">Auto docs</div>
+                <div class="info-grid" style="max-width: 800px; margin: 1em auto;">
+                    <div class="info-box teal fragment" style="padding: 0.6em;">
+                        <div class="icon" style="font-size: 1em;">📁</div>
+                        <div class="value" style="color: var(--matrix-teal); font-size: 0.75em;">STRUCTURE</div>
+                        <div class="label" style="font-size: 0.4em;">Auto docs</div>
                     </div>
-                    <div class="info-box teal fragment" style="padding: 0.8em;">
-                        <div class="icon">🏗️</div>
-                        <div class="value" style="color: var(--matrix-teal); font-size: 0.9em;">PATTERNS</div>
-                        <div class="label">Architecture</div>
+                    <div class="info-box teal fragment" style="padding: 0.6em;">
+                        <div class="icon" style="font-size: 1em;">🏗️</div>
+                        <div class="value" style="color: var(--matrix-teal); font-size: 0.75em;">PATTERNS</div>
+                        <div class="label" style="font-size: 0.4em;">Architecture</div>
                     </div>
-                    <div class="info-box teal fragment" style="padding: 0.8em;">
-                        <div class="icon">📏</div>
-                        <div class="value" style="color: var(--matrix-teal); font-size: 0.9em;">STANDARDS</div>
-                        <div class="label">Conventions</div>
+                    <div class="info-box teal fragment" style="padding: 0.6em;">
+                        <div class="icon" style="font-size: 1em;">📏</div>
+                        <div class="value" style="color: var(--matrix-teal); font-size: 0.75em;">STANDARDS</div>
+                        <div class="label" style="font-size: 0.4em;">Conventions</div>
                     </div>
                 </div>
-                <div class="video-placeholder fragment" style="padding: 1em;">
-                    /docs:init demo
+                <div class="fragment quote" style="margin-top: 1em; font-size: 1em;">
+                    Spec-Driven Development.<br />Everything is reviewable & trackable.
                 </div>
             </section>
 
@@ -1514,50 +642,56 @@ const orders = await db.query(
                 <p class="fragment" style="margin-top: 1em; color: var(--matrix-green);">
                     AI needs to understand before it acts
                 </p>
+                <p class="fragment" style="margin-top: 0.8em; font-size: 0.85em; color: var(--matrix-cyan);">
+                    This is also helpful for human, e.g. onboarding new team members.
+                </p>
             </section>
 
             <section>
                 <h3 style="color: var(--matrix-cyan);">/brainstorm</h3>
                 <p style="color: var(--brutal-gray); font-size: 0.9em;">AI challenges your thinking</p>
                 <div style="display: flex; justify-content: center; gap: 1.5em; margin: 1em 0;">
-                    <div class="info-box red fragment" style="width: 160px; padding: 0.8em;">
-                        <div class="icon">👍</div>
-                        <div class="value" style="color: var(--brutal-red); font-size: 0.9em;">YES-MEN</div>
-                        <div class="label">Dangerous</div>
+                    <div class="info-box red fragment" style="width: 200px; padding: 0.6em;">
+                        <div class="icon" style="font-size: 1em;">👍</div>
+                        <div class="value" style="color: var(--brutal-red); font-size: 0.7em;">YES-MEN</div>
+                        <div class="label" style="font-size: 0.4em;">Dangerous</div>
                     </div>
-                    <div class="info-box green fragment" style="width: 160px; padding: 0.8em;">
-                        <div class="icon">🤔</div>
-                        <div class="value" style="color: var(--matrix-green); font-size: 0.9em;">CHALLENGERS</div>
-                        <div class="label">Valuable</div>
+                    <div class="info-box green fragment" style="width: 200px; padding: 0.6em;">
+                        <div class="icon" style="font-size: 1em;">🤔</div>
+                        <div class="value" style="color: var(--matrix-green); font-size: 0.7em;">CHALLENGERS</div>
+                        <div class="label" style="font-size: 0.4em;">Valuable</div>
                     </div>
                 </div>
-                <div class="video-placeholder fragment" style="padding: 1em;">
-                    /brainstorm demo
+                <div class="fragment" style="margin-top: 1em;">
+                    <p style="font-size: 0.85em; color: var(--matrix-cyan);">Reveal unresolved questions & different perspectives.</p>
                 </div>
+                <p class="fragment" style="margin-top: 0.8em; font-size: 0.6em; color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace;">
+                    Plus: you're building a context for the next steps.
+                </p>
             </section>
 
             <section>
-                <h3 style="color: var(--matrix-cyan);">/plan</h3>
-                <p style="color: var(--brutal-gray); font-size: 0.9em;">Plans in files, not in heads</p>
-                <div class="info-grid" style="max-width: 650px; margin: 1em auto;">
-                    <div class="info-box green fragment" style="padding: 0.8em;">
-                        <div class="icon">📋</div>
-                        <div class="value" style="color: var(--matrix-green);">Phased</div>
-                        <div class="label">Disclosure</div>
+                <h3 style="color: var(--matrix-cyan); margin-bottom: 0.2em;">/plan</h3>
+                <p style="color: var(--brutal-gray); font-size: 0.8em; margin-bottom: 0.3em;">Plans in files, not in heads</p>
+                <div class="info-grid" style="max-width: 550px; margin: 0.4em auto;">
+                    <div class="info-box green fragment" style="padding: 0.3em;">
+                        <div class="icon" style="font-size: 0.8em;">📋</div>
+                        <div class="value" style="color: var(--matrix-green); font-size: 0.6em;">Phased</div>
+                        <div class="label" style="font-size: 0.35em;">Disclosure</div>
                     </div>
-                    <div class="info-box green fragment" style="padding: 0.8em;">
-                        <div class="icon">🔄</div>
-                        <div class="value" style="color: var(--matrix-green);">Tracked</div>
-                        <div class="label">Versions</div>
+                    <div class="info-box green fragment" style="padding: 0.3em;">
+                        <div class="icon" style="font-size: 0.8em;">🔄</div>
+                        <div class="value" style="color: var(--matrix-green); font-size: 0.6em;">Tracked</div>
+                        <div class="label" style="font-size: 0.35em;">Versions</div>
                     </div>
-                    <div class="info-box green fragment" style="padding: 0.8em;">
-                        <div class="icon">💾</div>
-                        <div class="value" style="color: var(--matrix-green);">Saved</div>
-                        <div class="label">Context</div>
+                    <div class="info-box green fragment" style="padding: 0.3em;">
+                        <div class="icon" style="font-size: 0.8em;">💾</div>
+                        <div class="value" style="color: var(--matrix-green); font-size: 0.6em;">Saved</div>
+                        <div class="label" style="font-size: 0.35em;">Context</div>
                     </div>
                 </div>
-                <div class="video-placeholder fragment" style="padding: 1em;">
-                    /plan demo
+                <div class="fragment" style="margin-top: 0.5em;">
+                    <img src="images/cmd-plan.png" alt="/plan command demo" style="max-width: 100%; max-height: 200px; border: 2px solid var(--matrix-green); box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);">
                 </div>
             </section>
 
@@ -1571,7 +705,7 @@ const orders = await db.query(
                     <span class="flow-arrow">→</span>
                     <div class="flow-node active">FRESH START</div>
                 </div>
-                <p style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace; font-size: 0.9em;">
+                <p style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace; font-size: 0.7em;">
                     Context rot is real • Reset to peak performance
                 </p>
             </section>
@@ -1579,43 +713,43 @@ const orders = await db.query(
             <section>
                 <h3 style="color: var(--matrix-green);">/code:auto</h3>
                 <p style="color: var(--brutal-gray); font-size: 0.9em;">18 years of workflow in one command</p>
-                <div class="flowchart fragment" style="margin: 1em 0;">
-                    <div class="flow-node active">
-                        <div style="font-size: 0.55em; color: var(--brutal-gray);">STEP 1</div>
-                        CODE
-                    </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-node warning">
-                        <div style="font-size: 0.55em; color: var(--brutal-gray);">STEP 2</div>
-                        TEST
-                    </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-node">
-                        <div style="font-size: 0.55em; color: var(--brutal-gray);">STEP 3</div>
-                        REVIEW
-                    </div>
-                    <span class="flow-arrow">→</span>
-                    <div class="flow-node active">
-                        <div style="font-size: 0.55em; color: var(--brutal-gray);">STEP 4</div>
-                        ITERATE
+                <!-- Linear Workflow: WRITE CODE → WRITE TEST → TEST → CODE REVIEW → ITERATE -->
+                <div class="fragment" style="margin: 1em 0;">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 0.4em; flex-wrap: wrap;">
+                        <div class="flow-node active" style="font-size: 0.7em; padding: 0.3em 0.5em;">WRITE CODE</div>
+                        <span class="flow-arrow" style="font-size: 0.8em;">→</span>
+                        <div class="flow-node warning" style="font-size: 0.7em; padding: 0.3em 0.5em;">WRITE TEST</div>
+                        <span class="flow-arrow" style="font-size: 0.8em;">→</span>
+                        <div class="flow-node" style="font-size: 0.7em; padding: 0.3em 0.5em;">TEST</div>
+                        <span class="flow-arrow" style="font-size: 0.8em;">→</span>
+                        <div class="flow-node" style="font-size: 0.7em; padding: 0.3em 0.5em;">CODE REVIEW</div>
+                        <span class="flow-arrow" style="font-size: 0.8em;">→</span>
+                        <div class="flow-node active" style="font-size: 0.7em; padding: 0.3em 0.5em;">ITERATE</div>
+                        <span class="flow-arrow" style="color: var(--brutal-red); font-size: 0.8em;">↻</span>
                     </div>
                 </div>
+                <p class="fragment" style="margin-top: 0.8em; font-size: 0.85em; color: var(--brutal-yellow);">
+                    If something's broken → repeat the process
+                </p>
+                <p class="fragment" style="margin-top: 0.5em; color: var(--matrix-cyan); font-size: 0.9em; font-family: 'IBM Plex Mono', monospace;">
+                    Test-Driven Development
+                </p>
             </section>
 
             <section>
                 <h3>THE PRINCIPLES</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.6em; max-width: 500px; margin: 0.8em auto;">
-                    <div class="info-box green fragment" style="display: flex; align-items: center; gap: 0.8em; padding: 0.6em 1em;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: var(--matrix-green); min-width: 80px;">YAGNI</div>
-                        <div style="text-align: left; color: var(--brutal-gray); font-size: 0.85em;">You Aren't Gonna Need It</div>
+                <div style="display: flex; justify-content: center; gap: 1em; max-width: 800px; margin: 1em auto;">
+                    <div class="info-box green fragment" style="flex: 1; padding: 0.8em; text-align: center;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: var(--matrix-green);">YAGNI</div>
+                        <div style="color: var(--brutal-gray); font-size: 0.6em; margin-top: 0.3em;">You Aren't Gonna Need It</div>
                     </div>
-                    <div class="info-box green fragment" style="display: flex; align-items: center; gap: 0.8em; padding: 0.6em 1em;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: var(--matrix-green); min-width: 80px;">KISS</div>
-                        <div style="text-align: left; color: var(--brutal-gray); font-size: 0.85em;">Keep It Simple, Stupid</div>
+                    <div class="info-box green fragment" style="flex: 1; padding: 0.8em; text-align: center;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: var(--matrix-green);">KISS</div>
+                        <div style="color: var(--brutal-gray); font-size: 0.6em; margin-top: 0.3em;">Keep It Simple, Stupid</div>
                     </div>
-                    <div class="info-box green fragment" style="display: flex; align-items: center; gap: 0.8em; padding: 0.6em 1em;">
-                        <div style="font-size: 1.2em; font-weight: bold; color: var(--matrix-green); min-width: 80px;">DRY</div>
-                        <div style="text-align: left; color: var(--brutal-gray); font-size: 0.85em;">Don't Repeat Yourself</div>
+                    <div class="info-box green fragment" style="flex: 1; padding: 0.8em; text-align: center;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: var(--matrix-green);">DRY</div>
+                        <div style="color: var(--brutal-gray); font-size: 0.6em; margin-top: 0.3em;">Don't Repeat Yourself</div>
                     </div>
                 </div>
                 <p class="citation" style="margin-top: 0.8em;">
@@ -1623,16 +757,6 @@ const orders = await db.query(
                 </p>
             </section>
 
-            <section class="interactive">
-                <h3 style="color: var(--matrix-cyan);">QUICK POLL</h3>
-                <p style="color: var(--brutal-white);">Which command would have saved you this month?</p>
-                <div class="poll-options">
-                    <div class="poll-option">A) /docs:init</div>
-                    <div class="poll-option">B) /brainstorm</div>
-                    <div class="poll-option">C) /plan</div>
-                    <div class="poll-option">D) /code:auto</div>
-                </div>
-            </section>
 
             <!-- ============================================ -->
             <!-- SECTION 6: ROADMAP FORWARD (Slides 37-40) -->
@@ -1641,34 +765,34 @@ const orders = await db.query(
             <section class="matrix-bg">
                 <p class="section-title">// LOOKING AHEAD</p>
                 <h2>WHEN TO HIRE DEVS</h2>
-                <div class="info-grid" style="max-width: 600px; margin: 1em auto;">
-                    <div class="info-box yellow fragment" style="padding: 0.8em;">
-                        <div class="icon">📈</div>
-                        <div class="value" style="color: var(--brutal-yellow); font-size: 0.9em;">SIGNS</div>
-                        <div class="label">Outgrown AI</div>
+                <div class="info-grid" style="max-width: 800px; margin: 1em auto;">
+                    <div class="info-box yellow fragment" style="padding: 0.6em;">
+                        <div class="icon" style="font-size: 1em;">📈</div>
+                        <div class="value" style="color: var(--brutal-yellow); font-size: 0.7em;">SIGNS</div>
+                        <div class="label" style="font-size: 0.4em;">Outgrown AI</div>
                     </div>
-                    <div class="info-box green fragment" style="padding: 0.8em;">
-                        <div class="icon">🎯</div>
-                        <div class="value" style="color: var(--matrix-green); font-size: 0.9em;">LOOK FOR</div>
-                        <div class="label">AI-fluent</div>
+                    <div class="info-box green fragment" style="padding: 0.6em;">
+                        <div class="icon" style="font-size: 1em;">🎯</div>
+                        <div class="value" style="color: var(--matrix-green); font-size: 0.7em;">LOOK FOR</div>
+                        <div class="label" style="font-size: 0.4em;">AI-fluent</div>
                     </div>
-                    <div class="info-box teal fragment" style="padding: 0.8em;">
-                        <div class="icon">✅</div>
-                        <div class="value" style="color: var(--matrix-teal); font-size: 0.9em;">VERIFY</div>
-                        <div class="label">Not generate</div>
+                    <div class="info-box teal fragment" style="padding: 0.6em;">
+                        <div class="icon" style="font-size: 1em;">✅</div>
+                        <div class="value" style="color: var(--matrix-teal); font-size: 0.7em;">VERIFY</div>
+                        <div class="label" style="font-size: 0.4em;">Not generate</div>
                     </div>
                 </div>
             </section>
 
             <section>
                 <h3>THE CHECKLIST</h3>
-                <div style="max-width: 600px; margin: 1em auto; text-align: left;">
-                    <ul class="checklist">
-                        <li class="fragment">Document before you code</li>
-                        <li class="fragment">Plan before you build</li>
-                        <li class="fragment">Clear before you execute</li>
-                        <li class="fragment">Test everything</li>
-                        <li class="fragment">Human review all security</li>
+                <div style="max-width: 800px; margin: 1em auto; text-align: left;">
+                    <ul class="checklist" style="font-size: 0.9em;">
+                        <li class="fragment no-wrap">Document before you code</li>
+                        <li class="fragment no-wrap">Plan before you build</li>
+                        <li class="fragment no-wrap">Clear before you execute</li>
+                        <li class="fragment no-wrap">Test everything</li>
+                        <li class="fragment no-wrap">Human review all security</li>
                     </ul>
                 </div>
             </section>
@@ -1678,7 +802,7 @@ const orders = await db.query(
                 <div class="flowchart" style="margin: 1.5em 0;">
                     <div class="flow-node warning">
                         <div style="font-size: 0.6em; color: var(--brutal-gray);">PHASE 1</div>
-                        DEMO
+                        MVP
                     </div>
                     <span class="flow-arrow">→</span>
                     <div class="flow-node warning">
@@ -1699,12 +823,12 @@ const orders = await db.query(
             </section>
 
             <section data-background-gradient="radial-gradient(circle, #1a0d0d 0%, #0a0a0a 100%)">
-                <h3>THE COST OF NOT DOING THIS</h3>
+                <h3 style="font-size: 1.2em;">I couldn't do this last year because the models were stupid</h3>
                 <div class="quote danger" style="font-size: 1.8em; margin-top: 1em;">
                     I KILLED INDIEBOOSTING.
                 </div>
-                <p class="fragment" style="font-size: 1.5em; margin-top: 1.5em; color: var(--matrix-green);">
-                    DON'T KILL YOURS.
+                <p class="fragment" style="font-size: 0.8em; margin-top: 1.5em; color: var(--matrix-green);">
+                    But now - with Opus 4.5 - it's totally possible.
                 </p>
             </section>
 
@@ -1712,15 +836,25 @@ const orders = await db.query(
             <!-- SECTION 7: CLOSING (Slides 41-43) -->
             <!-- ============================================ -->
 
-            <section class="matrix-bg">
-                <p class="section-title">// THE CONFESSION</p>
+            <section class="matrix-bg" style="max-width: 1000px;">
+                <p class="section-title">// 1 min for advertising</p>
                 <h2>I'M STILL LEARNING</h2>
-                <p class="fragment" style="margin-top: 1em; font-family: 'IBM Plex Mono', monospace; color: var(--matrix-cyan);">
+                <p class="fragment" style="margin-top: 0.8em; font-family: 'IBM Plex Mono', monospace; color: var(--matrix-cyan); font-size: 0.85em;">
                     ClaudeKit is my notebook
                 </p>
-                <p class="fragment" style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace;">
+                <p class="fragment" style="color: var(--brutal-gray); font-family: 'IBM Plex Mono', monospace; font-size: 0.65em;">
                     // Every bug I fix becomes a workflow
                 </p>
+                <div class="fragment" style="margin-top: 1em; padding: 0.2em; border: 2px solid var(--matrix-green); background: rgba(0, 255, 65, 0.05);">
+                    <p style="color: var(--matrix-green); font-size: 0.65em;">ClaudeKit is being trusted by 3K+ engineers across 109 countries after 3 months.</p>
+                    <p style="color: var(--brutal-white); font-size: 0.6em; margin-top: 0.5em;">These slides was 100% generated by ClaudeKit.</p>
+                </div>
+                <div class="fragment" style="margin-top: 0.65em;">
+                    <p style="color: var(--brutal-yellow); font-size: 0.85em; font-weight: bold;">$99 once. Life time updates.</p>
+                    <p style="color: var(--brutal-red); font-size: 0.5em; margin-top: 0.3em; font-family: 'IBM Plex Mono', monospace;">
+                        AIBUILDERSVN - 50% off - only 50 seats - expired in 3 days.
+                    </p>
+                </div>
                 <aside class="notes">
                     [3 min closing] Be humble here. Show vulnerability.
                     This builds trust and connection.
@@ -1734,6 +868,9 @@ const orders = await db.query(
                 <div class="fragment" style="margin-top: 1.5em; padding: 1em; border: 2px solid var(--matrix-cyan);">
                     <p style="color: var(--matrix-cyan); font-family: 'IBM Plex Mono', monospace;">
                         BUILD IN PUBLIC VIETNAM
+                    </p>
+                    <p style="color: var(--matrix-green); font-size: 0.9em; margin-top: 0.5em;">
+                        Join 60K+ solo-builders in Vietnam.
                     </p>
                 </div>
                 <aside class="notes">
@@ -1756,7 +893,7 @@ const orders = await db.query(
                         <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.85em; margin: 0;">
                             <span style="color: var(--matrix-green);">$</span> whoami<br>
                             <span style="color: var(--matrix-cyan);">Duy Nguyen</span><br>
-                            <span style="color: var(--brutal-gray);">@goon_nguyen</span>
+                            <a href="https://x.com/goon_nguyen" target="_blank" style="color: var(--brutal-gray); text-decoration: none;">@goon_nguyen</a>
                         </p>
                     </div>
                 </div>
